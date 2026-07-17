@@ -1,0 +1,12 @@
+TIPOGRAFIAS AUTO-ALOJADAS — Pulso Noticioso
+
+Las tres familias se distribuyen bajo la SIL Open Font License 1.1,
+que permite el uso, la modificacion y la redistribucion, incluso comercial.
+Se obtuvieron de los paquetes @fontsource (npm), que empaquetan las fuentes
+oficiales de Google Fonts sin modificarlas.
+
+- Anton .............. Vernon Adams / Cyreal — SIL OFL 1.1
+- Playfair Display ... Claus Eggers Sorensen — SIL OFL 1.1
+- Source Sans 3 ...... Adobe — SIL OFL 1.1
+
+Texto completo de la licencia: https://openfontlicense.org

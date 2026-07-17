@@ -1,0 +1,33 @@
+{
+  "v": 7,
+  "ticker": [
+    "🔴 Pulso Noticioso — Latiendo por la Verdad",
+    "📻 Escucha nuestra radio virtual en vivo las 24 horas",
+    "📺 Suscríbete a nuestro canal de YouTube",
+    "📱 Envía tu reporte ciudadano por WhatsApp desde el botón del portal"
+  ],
+  "destacada": {
+    "auto": true,
+    "img": "",
+    "cat": "pulso",
+    "etq": "Pulso Noticioso",
+    "tit": "Latiendo por la Verdad",
+    "res": "Noticias de México y el mundo, deportes, análisis, radio en vivo y video.",
+    "cuerpo": [
+      "Pulso Noticioso es un espacio informativo con cobertura nacional, local e internacional, radio virtual en vivo y canal de video.",
+      "La participación ciudadana es el corazón del proyecto: envíanos tus reportes por WhatsApp con el botón verde."
+    ],
+    "meta": "Redacción"
+  },
+  "laterales": [],
+  "inicio": [],
+  "secciones": {
+    "nacional": [],
+    "local": [],
+    "internacional": [],
+    "deportes": [],
+    "politika": [],
+    "dimes": [],
+    "columnas": []
+  }
+}

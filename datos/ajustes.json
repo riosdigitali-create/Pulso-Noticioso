@@ -1,0 +1,19 @@
+{
+  "radioStreamURL": "",
+  "youtube": {
+    "channelID": "UC9u58jVZuyRbB2FzacI8ehg",
+    "playlists": []
+  },
+  "vivo": {
+    "activo": true,
+    "fuentePrincipal": "https://vanguardia.com.mx/rss.xml",
+    "consultaLocal": "Saltillo Coahuila",
+    "tickerEnVivo": true
+  },
+  "redes": {
+    "facebook": "https://www.facebook.com/share/14n1UR5Yf4B/",
+    "instagram": "https://www.instagram.com",
+    "ytPersonal": "https://www.youtube.com",
+    "ytPulso": "https://www.youtube.com/@pulsonoticioso3443"
+  }
+}
