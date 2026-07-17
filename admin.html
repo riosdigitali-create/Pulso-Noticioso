@@ -1,0 +1,1148 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>Panel — Pulso Noticioso</title>
+<style>
+/* Tipografías auto-alojadas. El panel solo necesita el texto corrido y los
+   titulares; no carga Playfair, que aquí no se usa. */
+@font-face{font-family:'Anton';font-style:normal;font-weight:400;font-display:swap;src:url('fuentes/anton-latin-400-normal.woff2') format('woff2')}
+@font-face{font-family:'Source Sans 3';font-style:normal;font-weight:400;font-display:swap;src:url('fuentes/source-sans-3-latin-400-normal.woff2') format('woff2')}
+@font-face{font-family:'Source Sans 3';font-style:italic;font-weight:400;font-display:swap;src:url('fuentes/source-sans-3-latin-400-italic.woff2') format('woff2')}
+@font-face{font-family:'Source Sans 3';font-style:normal;font-weight:600;font-display:swap;src:url('fuentes/source-sans-3-latin-600-normal.woff2') format('woff2')}
+@font-face{font-family:'Source Sans 3';font-style:normal;font-weight:700;font-display:swap;src:url('fuentes/source-sans-3-latin-700-normal.woff2') format('woff2')}
+@font-face{font-family:'Source Sans 3';font-style:italic;font-weight:700;font-display:swap;src:url('fuentes/source-sans-3-latin-700-italic.woff2') format('woff2')}
+
+:root{
+  --tinta:#0A1626;--panel:#10233B;--panel-2:#0C1C31;--azul:#1B4E8A;
+  --celeste:#79C4FF;--hielo:#EAF4FE;--gris:#9DBBD4;--rojo:#E5484D;
+  --verde:#1F9D55;--ambar:#D98324;
+  --linea:rgba(121,196,255,.16);--r:12px;
+  --titular:'Anton','Arial Narrow',Impact,sans-serif;
+  --texto:'Source Sans 3',system-ui,-apple-system,'Segoe UI',Roboto,sans-serif;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:var(--texto);background:var(--tinta);color:var(--hielo);line-height:1.6;-webkit-font-smoothing:antialiased}
+img{max-width:100%;display:block}
+a{color:var(--celeste)}
+.wrap{max-width:900px;margin:0 auto;padding:0 20px}
+
+/* ============ LOGIN ============ */
+.login{position:fixed;inset:0;z-index:50;display:flex;align-items:center;justify-content:center;background:var(--tinta);padding:20px}
+.login.oculto{display:none}
+.login-caja{background:var(--panel-2);border:1px solid var(--linea);border-radius:16px;max-width:380px;width:100%;padding:34px 30px;box-shadow:0 30px 80px rgba(0,0,0,.7);text-align:center}
+.login-logo{font-size:2.2rem;margin-bottom:8px}
+.login-caja h1{font-family:var(--titular);font-size:1.35rem;letter-spacing:.04em;margin-bottom:4px}
+.login-caja>p{font-size:.85rem;color:var(--gris);margin-bottom:16px}
+.login-error{color:#FF9B9E;font-size:.82rem;font-weight:600;min-height:1.2em;margin:8px 0}
+.recordar{display:flex;align-items:center;gap:8px;justify-content:center;font-size:.82rem;color:var(--gris);margin-top:10px}
+.recordar input{width:16px;height:16px;accent-color:var(--celeste)}
+
+/* ============ AVISO DE VISTA PREVIA ============ */
+.aviso-previa{
+  background:linear-gradient(90deg,var(--ambar),#B36A1D);color:#fff;text-align:center;
+  padding:10px 16px;font-size:.86rem;font-weight:700;position:sticky;top:0;z-index:40;
+}
+.aviso-previa.oculto{display:none}
+.aviso-previa span{font-weight:400;opacity:.92}
+
+/* ============ CABECERA ============ */
+.app{display:none}
+.app.visible{display:block}
+.cab-app{background:#060D18;border-bottom:1px solid var(--linea);position:sticky;top:0;z-index:30}
+.aviso-previa:not(.oculto) ~ .app .cab-app{top:41px}
+.cab-app .wrap{display:flex;align-items:center;gap:14px;height:60px}
+.cab-app h1{font-family:var(--titular);font-size:1.1rem;letter-spacing:.05em}
+.cab-app .der{margin-left:auto;display:flex;align-items:center;gap:8px}
+.pastilla{display:inline-block;font-size:.66rem;font-weight:700;letter-spacing:.08em;padding:3px 10px;border-radius:999px;text-transform:uppercase}
+.pastilla.viva{background:var(--verde);color:#fff}
+.pastilla.previa{background:var(--ambar);color:#fff}
+
+/* ============ BARRA DE PUBLICACIÓN ============ */
+.barra-pub{background:var(--panel);border-bottom:1px solid var(--linea);padding:12px 0}
+.barra-pub .wrap{display:flex;align-items:center;gap:12px;flex-wrap:wrap}
+.estado-cambios{font-size:.84rem;color:var(--gris);flex:1;min-width:200px}
+.estado-cambios.sucio{color:#FFD08A;font-weight:600}
+.estado-cambios.limpio{color:#7EE2A8}
+
+/* ============ BOTONES ============ */
+.btn{
+  appearance:none;border:0;cursor:pointer;font-family:var(--texto);font-weight:700;
+  font-size:.84rem;padding:9px 18px;border-radius:8px;transition:filter .15s, opacity .15s;
+  display:inline-flex;align-items:center;gap:7px;text-decoration:none;
+}
+.btn:hover:not(:disabled){filter:brightness(1.15)}
+.btn:disabled{opacity:.4;cursor:not-allowed}
+.btn.azul{background:var(--azul);color:#fff}
+.btn.verde{background:var(--verde);color:#fff}
+.btn.gris{background:#22354D;color:var(--hielo)}
+.btn.peligro{background:transparent;color:#FF9B9E;border:1.5px solid rgba(229,72,77,.5)}
+.btn.grande{padding:12px 26px;font-size:.9rem}
+
+/* ============ FORMULARIOS ============ */
+.campo{
+  width:100%;background:#0A1830;border:1px solid var(--linea);border-radius:8px;color:var(--hielo);
+  font-family:var(--texto);font-size:.9rem;padding:9px 12px;
+}
+.campo:focus{outline:2px solid rgba(121,196,255,.5);border-color:var(--celeste)}
+textarea.campo{resize:vertical;min-height:60px}
+.etiqueta{display:block;font-size:.72rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--gris);margin:14px 0 5px}
+.ayuda{font-size:.78rem;color:#6E93B4;font-style:italic;margin-top:4px}
+
+/* ============ CONTENIDO ============ */
+main{padding:24px 0 80px}
+.tarjeta{background:var(--panel-2);border:1px solid var(--linea);border-radius:var(--r);padding:20px 22px;margin-bottom:18px}
+.tarjeta h2{font-family:var(--titular);font-size:1.05rem;letter-spacing:.05em;margin-bottom:4px}
+.tarjeta>p.intro{font-size:.85rem;color:var(--gris);margin-bottom:14px}
+
+.item{display:flex;justify-content:space-between;align-items:center;gap:12px;background:var(--panel);border:1px solid var(--linea);border-radius:10px;padding:10px 14px;margin-bottom:8px}
+.item-info{min-width:0;display:flex;align-items:center;gap:12px}
+.item-info img{width:56px;height:42px;object-fit:cover;border-radius:6px;flex:0 0 auto}
+.item-txt{min-width:0}
+.item-txt b{display:block;font-size:.9rem;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.item-txt span{font-size:.74rem;color:#6E93B4;font-style:italic}
+.item-acciones{display:flex;gap:4px;flex:0 0 auto}
+.item-acciones button{background:#182B45;border:1px solid var(--linea);border-radius:6px;color:var(--hielo);cursor:pointer;padding:5px 9px;font-size:.82rem}
+.item-acciones button:hover:not(:disabled){border-color:var(--celeste)}
+.item-acciones button:disabled{opacity:.3;cursor:default}
+.item-acciones button.peligro{color:#FF9B9E}
+.vacio{color:#6E93B4;font-style:italic;font-size:.88rem;padding:10px 0}
+
+/* ============ ZONA DE ARRASTRE ============ */
+.soltar{
+  border:2px dashed rgba(121,196,255,.35);border-radius:var(--r);padding:28px 20px;text-align:center;
+  color:var(--gris);cursor:pointer;transition:all .15s;background:rgba(121,196,255,.03);
+}
+.soltar:hover,.soltar.encima{border-color:var(--celeste);background:rgba(121,196,255,.1);color:var(--hielo)}
+.soltar b{display:block;font-size:1rem;color:var(--hielo);margin-bottom:4px}
+.soltar small{font-size:.78rem;opacity:.8}
+
+.galeria{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:12px;margin-top:14px}
+.foto-item{position:relative;border:1px solid var(--linea);border-radius:10px;overflow:hidden;background:var(--panel)}
+.foto-item img{aspect-ratio:4/3;object-fit:cover;width:100%}
+.foto-item .pie-foto{padding:7px 9px;font-size:.68rem;color:#6E93B4;word-break:break-all;line-height:1.35}
+.foto-item .acciones-foto{position:absolute;top:6px;right:6px;display:flex;gap:4px}
+.foto-item .acciones-foto button{
+  background:rgba(4,10,20,.85);border:0;border-radius:6px;color:#fff;cursor:pointer;
+  padding:4px 8px;font-size:.75rem;backdrop-filter:blur(4px);
+}
+.foto-item .acciones-foto button:hover{background:var(--rojo)}
+.foto-item .acciones-foto button.usar:hover{background:var(--verde)}
+
+/* ============ PROGRESO DE SUBIDA ============ */
+.progreso-subida{margin-top:12px}
+.progreso-subida div{font-size:.82rem;color:var(--gris);padding:4px 0;display:flex;gap:8px;align-items:center}
+.progreso-subida div.ok{color:#7EE2A8}
+.progreso-subida div.error{color:#FF9B9E}
+
+.previa-img{margin:8px 0 2px;min-height:0}
+.previa-img img{max-height:120px;border-radius:8px;border:1px solid var(--linea)}
+.previa-img span{font-size:.8rem;color:#FFB4B6;font-style:italic}
+
+.form-nota{border-top:1px dashed var(--linea);margin-top:18px;padding-top:8px}
+.form-botones{display:flex;gap:8px;margin-top:16px}
+
+.toast{
+  position:fixed;bottom:20px;left:50%;transform:translateX(-50%) translateY(120%);
+  background:var(--panel);border:1px solid var(--linea);border-radius:10px;padding:12px 22px;
+  font-size:.88rem;font-weight:600;box-shadow:0 12px 40px rgba(0,0,0,.6);z-index:60;
+  transition:transform .3s ease;max-width:90vw;text-align:center;
+}
+.toast.visible{transform:translateX(-50%) translateY(0)}
+.toast.ok{border-color:rgba(31,157,85,.6);color:#7EE2A8}
+.toast.error{border-color:rgba(229,72,77,.6);color:#FF9B9E}
+
+@media (max-width:600px){
+  .tarjeta{padding:16px 14px}
+  .item{flex-direction:column;align-items:flex-start}
+  .cab-app .wrap{height:auto;padding-top:10px;padding-bottom:10px;flex-wrap:wrap}
+}
+</style>
+</head>
+<body>
+
+<!-- ============ LOGIN ============ -->
+<div class="login" id="pantallaLogin">
+  <div class="login-caja">
+    <div class="login-logo">🔒</div>
+    <h1>Panel — Pulso Noticioso</h1>
+    <p>Introduce la contraseña para administrar el portal.</p>
+    <input id="campoClave" type="password" class="campo" autocomplete="current-password" placeholder="Contraseña">
+    <label class="recordar"><input type="checkbox" id="recordarme"> Recordar en este equipo</label>
+    <p class="login-error" id="errorLogin"></p>
+    <button class="btn azul grande" id="btnEntrar" style="width:100%;justify-content:center">Entrar</button>
+  </div>
+</div>
+
+<!-- ============ AVISO DE VISTA PREVIA ============ -->
+<div class="aviso-previa oculto" id="avisoPrevia">
+  👁️ MODO VISTA PREVIA — <span>no se alcanza el Worker de Cloudflare: puedes probarlo todo, pero <b>nada se publica</b>. Los cambios solo viven en este navegador. Si esto sale en el sitio publicado, revisa que el Worker esté desplegado y que su URL coincida con <code>API_BASE</code>.</span>
+</div>
+
+<!-- ============ APLICACIÓN ============ -->
+<div class="app" id="app">
+
+  <div class="cab-app">
+    <div class="wrap">
+      <h1>🛠️ Panel</h1>
+      <span class="pastilla viva" id="pastillaModo">Publicación activa</span>
+      <div class="der">
+        <a class="btn gris" href="index.html" target="_blank" rel="noopener">Ver el sitio ↗</a>
+        <button class="btn gris" id="btnSalir">Salir</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="barra-pub">
+    <div class="wrap">
+      <span class="estado-cambios limpio" id="estadoCambios">Sin cambios pendientes.</span>
+      <button class="btn gris" id="btnDescartar" disabled>Descartar cambios</button>
+      <button class="btn verde" id="btnPublicar" disabled>🚀 Publicar</button>
+    </div>
+  </div>
+
+  <main>
+    <div class="wrap">
+
+      <div class="tarjeta">
+        <label class="etiqueta" style="margin-top:0">¿Qué quieres editar?</label>
+        <select class="campo" id="selectorColeccion"></select>
+      </div>
+
+      <div id="cuerpoPanel"></div>
+
+    </div>
+  </main>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<script>
+/* =============================================================================
+   PULSO NOTICIOSO — Panel de administración
+   -----------------------------------------------------------------------------
+   Este archivo es público (cualquiera puede abrirlo y leer su código) y no pasa
+   nada: no contiene ningún secreto. Solo sabe hablar con /api/*, y esa función
+   valida la contraseña y guarda el token de GitHub del lado del servidor.
+
+   La contraseña se guarda en sessionStorage (o localStorage si el usuario marca
+   "recordar") y se reenvía en el body de cada petición. No hay sesión de
+   servidor, ni cookie, ni JWT: no hacen falta para un solo usuario.
+   ========================================================================== */
+
+/* =============================================================================
+   DÓNDE VIVE LA API
+   -----------------------------------------------------------------------------
+   Este panel se sirve desde GitHub Pages (pulsonoticioso.org), que NO ejecuta
+   código de servidor. La API vive aparte, en un Worker de Cloudflare con su
+   propia URL. Por eso aquí hay una URL absoluta y no un simple "/api/...".
+   Al ser otro dominio, el navegador aplica CORS: el Worker solo acepta
+   peticiones que vengan de pulsonoticioso.org.
+
+   ⚠️ Si algún día cambias el nombre del Worker, cambia esta línea. Es lo único
+   que hay que tocar. Sin la barra final.
+   ========================================================================== */
+const API_BASE = 'https://pulso-api.riosdigitali.workers.dev';
+
+/* ===== Estado global ===== */
+let CLAVE = '';
+let MODO_PREVIA = false;   // true = no hay backend; se puede probar, no publicar
+let HAY_CAMBIOS = false;
+let COL_ACTUAL = 'destacada';
+let IMAGENES = [];         // lista de imágenes publicadas, según /api/list
+
+const CLAVE_BORRADOR = 'pulsoBorradorPanel';
+
+/* ===== Utilidades ===== */
+const clon = o => JSON.parse(JSON.stringify(o));
+const esc = s => String(s??'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+const $ = id => document.getElementById(id);
+
+/**
+ * Convierte un texto en un slug seguro para nombre de archivo.
+ * normalize('NFD') + quitar diacríticos = "Reforma Eléctrica" → "reforma-electrica".
+ * Sin esto, las tildes y las ñ acabarían convertidas en "_" por el saneado del
+ * servidor y los nombres quedarían ilegibles.
+ */
+function slug(texto){
+  return String(texto||'')
+    .normalize('NFD').replace(/[\u0300-\u036f]/g,'')
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g,'-')
+    .replace(/^-+|-+$/g,'')
+    .slice(0,60) || 'nota';
+}
+
+function toast(msg, tipo){
+  const t = $('toast');
+  t.textContent = msg;
+  t.className = 'toast visible ' + (tipo||'');
+  clearTimeout(toast._t);
+  toast._t = setTimeout(()=>{ t.className = 'toast ' + (tipo||''); }, 3800);
+}
+
+/* =============================================================================
+   ESTRUCTURA DEL CONTENIDO
+   ========================================================================== */
+const RESPALDO = {
+  v: 7,
+  ticker: ['🔴 Pulso Noticioso — Latiendo por la Verdad'],
+  destacada: { auto:true, img:'', cat:'pulso', etq:'Pulso Noticioso', tit:'Latiendo por la Verdad',
+               res:'Noticias de México y el mundo, deportes, análisis, radio en vivo y video.', cuerpo:[], meta:'Redacción' },
+  laterales: [], inicio: [],
+  secciones: { nacional:[], local:[], internacional:[], deportes:[], politika:[], dimes:[], columnas:[] }
+};
+const AJUSTES_RESPALDO = {
+  radioStreamURL:'',
+  youtube:{ channelID:'', playlists:[] },
+  vivo:{ activo:true, fuentePrincipal:'https://vanguardia.com.mx/rss.xml', consultaLocal:'Saltillo Coahuila', tickerEnVivo:true },
+  redes:{ facebook:'', instagram:'', ytPersonal:'', ytPulso:'' }
+};
+
+let CONTENIDO = clon(RESPALDO);
+let AJUSTES = clon(AJUSTES_RESPALDO);
+
+const COLECCIONES = [
+  {id:'destacada',     nombre:'⭐ Nota destacada',                          tipo:'unica'},
+  {id:'laterales',     nombre:'📌 Notas laterales (portada)',               tipo:'lista'},
+  {id:'inicio',        nombre:'🏠 Al momento (portada)',                    tipo:'lista'},
+  {id:'nacional',      nombre:'🇲🇽 Nacional',                               tipo:'lista'},
+  {id:'local',         nombre:'📍 Local',                                   tipo:'lista'},
+  {id:'internacional', nombre:'🌎 Internacional',                           tipo:'lista'},
+  {id:'deportes',      nombre:'⚽ Deportes',                                tipo:'lista'},
+  {id:'politika',      nombre:'📊 Análisis Informativo · 🏛️ Polítika',      tipo:'lista'},
+  {id:'dimes',         nombre:'📊 Análisis Informativo · 🗣️ Dimes y diretes',tipo:'lista'},
+  {id:'columnas',      nombre:'📊 Análisis Informativo · ✒️ Columnas',       tipo:'lista'},
+  {id:'imagenes',      nombre:'🖼️ Biblioteca de imágenes',                  tipo:'imagenes'},
+  {id:'ticker',        nombre:'🔴 Ticker de última hora',                   tipo:'ticker'},
+  {id:'ajustes',       nombre:'⚙️ Ajustes (radio, YouTube, redes)',          tipo:'ajustes'}
+];
+
+// Secciones válidas como prefijo en el nombre de archivo de una imagen.
+const SECCIONES_IMG = ['destacada','laterales','inicio','nacional','local','internacional','deportes','politika','dimes','columnas'];
+const CATS = [['nacional','🇲🇽 Nacional'],['local','📍 Local'],['internacional','🌎 Internacional'],
+              ['deportes','⚽ Deportes'],['opinion','📊 Opinión'],['pulso','💙 Pulso (marca)']];
+
+function refColeccion(id){
+  if(id==='laterales') return CONTENIDO.laterales;
+  if(id==='inicio') return CONTENIDO.inicio;
+  return CONTENIDO.secciones[id];
+}
+
+/* =============================================================================
+   CLIENTE DE LA API
+   ========================================================================== */
+async function api(ruta, extra){
+  if(MODO_PREVIA) throw new Error('Modo vista previa: no hay servidor.');
+  const res = await fetch(API_BASE + '/api/' + ruta, {
+    method: 'POST',
+    headers: { 'content-type': 'application/json' },
+    body: JSON.stringify(Object.assign({ clave: CLAVE }, extra || {}))
+  });
+  const datos = await res.json().catch(()=>({ ok:false, error:'Respuesta ilegible del servidor.' }));
+  if(!res.ok || !datos.ok) throw new Error(datos.error || ('HTTP ' + res.status));
+  return datos;
+}
+
+/* =============================================================================
+   LOGIN
+   -----------------------------------------------------------------------------
+   Distingue tres resultados, y la diferencia importa:
+     - 200        → clave correcta, hay backend. Publicación activa.
+     - 401/500    → hay backend pero algo va mal. Se muestra el error real.
+     - fetch falla→ NO hay backend. Con el Worker en otro dominio, esto ya no
+                    significa solo "no hay servidor": también salta si el Worker
+                    no está desplegado, si API_BASE apunta a una URL que no
+                    existe, o si CORS rechaza este origen. El navegador no
+                    distingue esos casos — todos llegan como "Failed to fetch".
+   ========================================================================== */
+async function intentarEntrar(clave){
+  try{
+    const res = await fetch(API_BASE + '/api/login', {
+      method:'POST',
+      headers:{'content-type':'application/json'},
+      body: JSON.stringify({ clave })
+    });
+    const datos = await res.json().catch(()=>({}));
+    if(res.ok && datos.ok) return { estado:'ok' };
+    return { estado:'rechazado', mensaje: datos.error || 'Contraseña incorrecta.' };
+  }catch(e){
+    // Error de red, no de credenciales: no hay función edge al otro lado.
+    return { estado:'sin-backend' };
+  }
+}
+
+async function entrar(){
+  const clave = $('campoClave').value;
+  if(!clave){ $('errorLogin').textContent = 'Escribe la contraseña.'; return; }
+  $('btnEntrar').disabled = true;
+  $('errorLogin').textContent = '';
+
+  const r = await intentarEntrar(clave);
+  $('btnEntrar').disabled = false;
+
+  if(r.estado === 'rechazado'){
+    $('errorLogin').textContent = r.mensaje;
+    return;
+  }
+
+  CLAVE = clave;
+  MODO_PREVIA = (r.estado === 'sin-backend');
+
+  // Dónde se guarda la clave: localStorage si pidió recordar (sobrevive al
+  // cierre del navegador), sessionStorage si no (se borra al cerrar la pestaña).
+  const almacen = $('recordarme').checked ? localStorage : sessionStorage;
+  try{ almacen.setItem('pulsoClave', clave); }catch(e){}
+
+  await arrancarApp();
+}
+
+function salir(){
+  try{ localStorage.removeItem('pulsoClave'); sessionStorage.removeItem('pulsoClave'); }catch(e){}
+  location.reload();
+}
+
+/* =============================================================================
+   CARGA DEL ESTADO
+   -----------------------------------------------------------------------------
+   Prioridad, de más a menos autoridad:
+     1. Borrador local  → trabajo a medias que aún no se ha publicado.
+     2. JSON publicado  → lo que hay en producción ahora mismo.
+     3. Convención de nombres → si no existe el JSON (primer despliegue),
+        se reconstruyen las notas a partir de los nombres de las imágenes.
+     4. RESPALDO        → si no hay ni imágenes.
+   ========================================================================== */
+async function leerJSONPublicado(ruta, respaldo){
+  try{
+    const res = await fetch(ruta + '?t=' + Date.now(), { cache:'no-store' });
+    if(!res.ok) throw new Error(res.status);
+    return await res.json();
+  }catch(e){
+    return null; // null = "no existe", distinto de "existe y está vacío"
+  }
+}
+
+/**
+ * Reconstruye notas a partir de los nombres de archivo.
+ *
+ * Esta es la capa 1 del estado: el nombre del archivo ES el dato. Subir
+ * "nacional--reforma-electoral--m3k9.jpg" basta para que aparezca una nota en
+ * Nacional titulada "Reforma electoral", sin tocar ningún JSON.
+ *
+ * Solo actúa cuando datos/contenido.json todavía no existe. En cuanto el panel
+ * publica una vez, el JSON manda y esto no vuelve a ejecutarse: si no fuera
+ * así, borrar una nota desde el panel la haría reaparecer sola.
+ */
+function derivarDeNombres(archivos){
+  const derivado = clon(RESPALDO);
+  archivos.forEach(a=>{
+    const nombre = a.path.split('/').pop().replace(/\.[^.]+$/,'');
+    const partes = nombre.split('--');
+    if(partes.length < 2) return;
+    const [seccion, textoSlug] = partes;
+    if(!SECCIONES_IMG.includes(seccion)) return;
+
+    const titulo = textoSlug.replace(/-/g,' ').replace(/^./, c=>c.toUpperCase());
+    const nota = {
+      img: a.path,
+      cat: ['nacional','local','internacional','deportes'].includes(seccion) ? seccion
+           : (['politika','dimes','columnas'].includes(seccion) ? 'opinion' : 'pulso'),
+      etq: 'Al momento',
+      tit: titulo,
+      res: '',
+      cuerpo: [],
+      meta: 'Redacción'
+    };
+    if(seccion === 'destacada'){ Object.assign(derivado.destacada, nota, { auto:false }); }
+    else if(seccion === 'laterales'){ derivado.laterales.push(nota); }
+    else if(seccion === 'inicio'){ derivado.inicio.push(nota); }
+    else { derivado.secciones[seccion].push(nota); }
+  });
+  return derivado;
+}
+
+function normalizar(d){
+  const s = d.secciones || (d.secciones = {});
+  if(Array.isArray(s.analisis)){ s.politika = (s.politika||[]).concat(s.analisis); delete s.analisis; }
+  ['nacional','local','internacional','deportes','politika','dimes','columnas']
+    .forEach(k=>{ if(!Array.isArray(s[k])) s[k] = []; });
+  if(!Array.isArray(d.laterales)) d.laterales = [];
+  if(!Array.isArray(d.inicio)) d.inicio = [];
+  if(!Array.isArray(d.ticker) || !d.ticker.length) d.ticker = RESPALDO.ticker.slice();
+  if(!d.destacada || typeof d.destacada !== 'object') d.destacada = clon(RESPALDO.destacada);
+  return d;
+}
+
+async function cargarEstado(){
+  // 1. Imágenes publicadas (solo si hay backend: /api/list necesita el token).
+  IMAGENES = [];
+  if(!MODO_PREVIA){
+    try{
+      const r = await api('list');
+      IMAGENES = r.archivos || [];
+    }catch(e){
+      toast('No se pudo listar las imágenes: ' + e.message, 'error');
+    }
+  }
+
+  // 2. Borrador local sin publicar: tiene prioridad sobre todo.
+  let borrador = null;
+  try{
+    const b = localStorage.getItem(CLAVE_BORRADOR);
+    if(b){
+      const d = JSON.parse(b);
+      if(d && d.contenido && d.contenido.v === RESPALDO.v) borrador = d;
+      else localStorage.removeItem(CLAVE_BORRADOR); // borrador de otra versión: se descarta
+    }
+  }catch(e){}
+
+  if(borrador){
+    CONTENIDO = normalizar(borrador.contenido);
+    AJUSTES = Object.assign(clon(AJUSTES_RESPALDO), borrador.ajustes);
+    marcarSucio(true);
+    toast('Recuperado un borrador sin publicar de este navegador.', 'ok');
+    return;
+  }
+
+  // 3. JSON publicado.
+  const [pubContenido, pubAjustes] = await Promise.all([
+    leerJSONPublicado('datos/contenido.json'),
+    leerJSONPublicado('datos/ajustes.json')
+  ]);
+
+  if(pubContenido){
+    CONTENIDO = normalizar(pubContenido);
+  }else if(IMAGENES.length){
+    // 4. Convención de nombres como respaldo del primer despliegue.
+    CONTENIDO = normalizar(derivarDeNombres(IMAGENES));
+    toast('No hay contenido.json publicado: el contenido se dedujo de los nombres de las imágenes.', 'ok');
+  }else{
+    CONTENIDO = clon(RESPALDO);
+  }
+  AJUSTES = Object.assign(clon(AJUSTES_RESPALDO), pubAjustes || {});
+  marcarSucio(false);
+}
+
+/* =============================================================================
+   BORRADOR Y PUBLICACIÓN
+   ========================================================================== */
+function limpiarIds(o){
+  // _id es un índice temporal que usa el sitio público al pintar; nunca debe
+  // acabar dentro del JSON publicado.
+  const c = clon(o);
+  const quitar = n => { delete n._id; };
+  quitar(c.destacada);
+  c.laterales.forEach(quitar);
+  c.inicio.forEach(quitar);
+  Object.values(c.secciones).forEach(l=>l.forEach(quitar));
+  return c;
+}
+
+function guardarBorrador(){
+  try{
+    localStorage.setItem(CLAVE_BORRADOR, JSON.stringify({ contenido: limpiarIds(CONTENIDO), ajustes: AJUSTES }));
+  }catch(e){}
+  marcarSucio(true);
+}
+
+function marcarSucio(sucio){
+  HAY_CAMBIOS = sucio;
+  const e = $('estadoCambios');
+  if(sucio){
+    e.className = 'estado-cambios sucio';
+    e.textContent = MODO_PREVIA
+      ? '● Cambios sin publicar (en vista previa no se pueden publicar).'
+      : '● Tienes cambios sin publicar. Pulsa Publicar para que los vea el público.';
+  }else{
+    e.className = 'estado-cambios limpio';
+    e.textContent = '✓ Todo publicado. No hay cambios pendientes.';
+  }
+  $('btnPublicar').disabled = !sucio || MODO_PREVIA;
+  $('btnDescartar').disabled = !sucio;
+}
+
+async function publicar(){
+  if(MODO_PREVIA){ toast('En vista previa no se puede publicar.', 'error'); return; }
+  const btn = $('btnPublicar');
+  btn.disabled = true;
+  btn.textContent = '⏳ Publicando...';
+  try{
+    // Dos commits, uno por archivo. Se hacen en serie a propósito: en paralelo
+    // pueden chocar en el mismo branch y GitHub rechaza el segundo con un 409.
+    await api('save', { path:'datos/contenido.json', contenido: limpiarIds(CONTENIDO) });
+    await api('save', { path:'datos/ajustes.json',   contenido: AJUSTES });
+    try{ localStorage.removeItem(CLAVE_BORRADOR); }catch(e){}
+    marcarSucio(false);
+    toast('✓ Publicado. El sitio se actualiza en 30-60 segundos.', 'ok');
+  }catch(e){
+    toast('No se pudo publicar: ' + e.message, 'error');
+  }finally{
+    btn.textContent = '🚀 Publicar';
+    btn.disabled = !HAY_CAMBIOS || MODO_PREVIA;
+  }
+}
+
+async function descartar(){
+  if(!confirm('¿Descartar todos los cambios sin publicar y volver a lo que hay en el sitio?')) return;
+  try{ localStorage.removeItem(CLAVE_BORRADOR); }catch(e){}
+  await cargarEstado();
+  render();
+  toast('Cambios descartados.', 'ok');
+}
+
+/* =============================================================================
+   SUBIDA DE IMÁGENES
+   ========================================================================== */
+function leerComoBase64(archivo){
+  return new Promise((resolve, reject)=>{
+    const lector = new FileReader();
+    lector.onload = ()=> resolve(String(lector.result).split(',')[1]);
+    lector.onerror = ()=> reject(new Error('No se pudo leer el archivo.'));
+    lector.readAsDataURL(archivo);
+  });
+}
+
+/**
+ * Construye el nombre según la convención: seccion--slug--id.ext
+ * El id (timestamp en base36) evita que dos fotos con el mismo título se pisen.
+ */
+function nombreConvencion(seccion, titulo, archivo){
+  const ext = (archivo.name.match(/\.([a-z0-9]+)$/i)||[,'jpg'])[1].toLowerCase();
+  const id = Date.now().toString(36) + Math.floor(Math.random()*1296).toString(36);
+  return `contenido/imagenes/${seccion}--${slug(titulo || archivo.name.replace(/\.[^.]+$/,''))}--${id}.${ext}`;
+}
+
+async function subirArchivos(archivos, seccion, tituloBase, alTerminar){
+  const cont = $('progresoSubida');
+  if(!archivos.length) return;
+  if(MODO_PREVIA){
+    toast('En vista previa no se pueden subir imágenes (no hay servidor).', 'error');
+    return;
+  }
+  const validas = /\.(jpe?g|png|webp|gif)$/i;
+  const subidas = [];
+
+  for(const archivo of archivos){
+    const linea = document.createElement('div');
+    linea.textContent = `⏳ Subiendo ${archivo.name}...`;
+    if(cont) cont.appendChild(linea);
+
+    if(!validas.test(archivo.name)){
+      linea.className = 'error';
+      linea.textContent = `✕ ${archivo.name}: solo se admiten jpg, png, webp o gif.`;
+      continue;
+    }
+    if(archivo.size > 5*1024*1024){
+      linea.className = 'error';
+      linea.textContent = `✕ ${archivo.name}: pesa ${(archivo.size/1048576).toFixed(1)} MB (máximo 5 MB).`;
+      continue;
+    }
+
+    try{
+      const base64 = await leerComoBase64(archivo);
+      const path = nombreConvencion(seccion, tituloBase, archivo);
+      await api('upload', { path, base64 });
+      IMAGENES.push({ path });
+      subidas.push(path);
+      linea.className = 'ok';
+      linea.textContent = `✓ ${archivo.name} → ${path.split('/').pop()}`;
+    }catch(e){
+      linea.className = 'error';
+      linea.textContent = `✕ ${archivo.name}: ${e.message}`;
+    }
+  }
+
+  if(subidas.length){
+    toast(`${subidas.length} imagen(es) subida(s). Ya están en el repositorio.`, 'ok');
+    if(alTerminar) alTerminar(subidas);
+  }
+}
+
+async function borrarImagen(path){
+  if(!confirm(`¿Borrar ${path.split('/').pop()} del repositorio?\n\nSi alguna nota la está usando, se quedará sin foto.`)) return;
+  try{
+    await api('delete', { path });
+    IMAGENES = IMAGENES.filter(i=>i.path !== path);
+    render();
+    toast('Imagen borrada.', 'ok');
+  }catch(e){
+    toast('No se pudo borrar: ' + e.message, 'error');
+  }
+}
+
+/* =============================================================================
+   RENDER DEL PANEL
+   ========================================================================== */
+function render(){
+  const sel = $('selectorColeccion');
+  sel.innerHTML = COLECCIONES.map(c=>
+    `<option value="${c.id}" ${c.id===COL_ACTUAL?'selected':''}>${c.nombre}</option>`).join('');
+
+  const col = COLECCIONES.find(c=>c.id===COL_ACTUAL) || COLECCIONES[0];
+  const cuerpo = $('cuerpoPanel');
+
+  if(col.tipo === 'unica')          cuerpo.innerHTML = vistaDestacada();
+  else if(col.tipo === 'lista')     cuerpo.innerHTML = vistaLista(col);
+  else if(col.tipo === 'imagenes')  cuerpo.innerHTML = vistaImagenes();
+  else if(col.tipo === 'ticker')    cuerpo.innerHTML = vistaTicker();
+  else if(col.tipo === 'ajustes')   cuerpo.innerHTML = vistaAjustes();
+
+  conectarZonaSoltar();
+  conectarZonaFoto(); // la destacada pinta su formulario dentro de render()
+}
+
+function vistaDestacada(){
+  return `<div class="tarjeta">
+    <h2>⭐ Nota destacada</h2>
+    <p class="intro">La nota grande de la portada. Si la dejas en automático, se llena sola con la última hora del RSS.</p>
+    <label class="etiqueta">Modo</label>
+    <select class="campo" id="destAuto" onchange="cambiarModoDestacada(this.value)">
+      <option value="1" ${CONTENIDO.destacada.auto?'selected':''}>🔴 Automático — la última hora del RSS</option>
+      <option value="0" ${!CONTENIDO.destacada.auto?'selected':''}>✍️ Manual — mi propia nota</option>
+    </select>
+    ${CONTENIDO.destacada.auto
+      ? `<p class="ayuda">En automático, lo que escribas abajo solo se ve mientras cargan las noticias, o si el RSS falla.</p>`
+      : ''}
+    ${formNota(CONTENIDO.destacada, 'destacada', -1)}
+  </div>`;
+}
+
+function vistaLista(col){
+  const lista = refColeccion(col.id) || [];
+  const items = lista.map((n,i)=>`
+    <div class="item">
+      <div class="item-info">
+        ${n.img?`<img src="${esc(n.img)}" alt="" onerror="this.remove()">`:''}
+        <div class="item-txt"><b>${esc(n.tit)||'(sin título)'}</b><span>${esc(n.etq)} · ${esc(n.meta)}</span></div>
+      </div>
+      <div class="item-acciones">
+        <button onclick="editarNota(${i})" title="Editar">✏️</button>
+        <button onclick="moverNota(${i},-1)" title="Subir" ${i===0?'disabled':''}>▲</button>
+        <button onclick="moverNota(${i},1)" title="Bajar" ${i===lista.length-1?'disabled':''}>▼</button>
+        ${col.id==='laterales'?`<button onclick="hacerDestacada(${i})" title="Intercambiar con la destacada">⭐</button>`:''}
+        <button onclick="eliminarNota(${i})" title="Eliminar" class="peligro">🗑️</button>
+      </div>
+    </div>`).join('') || '<p class="vacio">No hay notas propias en esta sección. Se está llenando sola con las noticias en vivo.</p>';
+
+  return `<div class="tarjeta">
+    <h2>${col.nombre}</h2>
+    <p class="intro">Tus notas aparecen siempre antes que las noticias en vivo.</p>
+    ${items}
+    <button class="btn azul" style="margin-top:12px" onclick="nuevaNota()">＋ Agregar nota</button>
+    <div id="formNota"></div>
+  </div>`;
+}
+
+function vistaImagenes(){
+  const galeria = IMAGENES.length
+    ? `<div class="galeria">${IMAGENES.map(i=>`
+        <div class="foto-item">
+          <img src="${esc(i.path)}?t=${Date.now()}" alt="" loading="lazy" onerror="this.style.opacity=.25">
+          <div class="acciones-foto">
+            <button class="peligro" onclick="borrarImagen('${esc(i.path)}')" title="Borrar del repositorio">🗑️</button>
+          </div>
+          <div class="pie-foto">${esc(i.path.split('/').pop())}</div>
+        </div>`).join('')}</div>`
+    : '<p class="vacio">Todavía no has subido ninguna imagen.</p>';
+
+  return `<div class="tarjeta">
+    <h2>🖼️ Biblioteca de imágenes</h2>
+    <p class="intro">Todas las fotos que viven en el repositorio. Se renombran solas siguiendo la convención <code>sección--título--id</code>.</p>
+
+    <label class="etiqueta">Sección a la que pertenecen</label>
+    <select class="campo" id="subirSeccion">
+      ${SECCIONES_IMG.map(s=>`<option value="${s}">${s}</option>`).join('')}
+    </select>
+
+    <label class="etiqueta">Título base (para el nombre del archivo)</label>
+    <input class="campo" id="subirTitulo" placeholder="Ej. Reforma electoral avanza">
+    <p class="ayuda">Si lo dejas vacío, se usa el nombre original del archivo.</p>
+
+    <label class="etiqueta">Arrastra las fotos aquí</label>
+    <div class="soltar" id="zonaSoltar">
+      <b>📁 Suelta las imágenes aquí</b>
+      <small>o haz clic para elegirlas — jpg, png, webp, gif · máx. 5 MB cada una</small>
+      <input type="file" id="inputArchivos" multiple accept="image/jpeg,image/png,image/webp,image/gif" hidden>
+    </div>
+    <div class="progreso-subida" id="progresoSubida"></div>
+
+    ${galeria}
+  </div>`;
+}
+
+function vistaTicker(){
+  return `<div class="tarjeta">
+    <h2>🔴 Ticker de última hora</h2>
+    <p class="intro">La cinta roja que cruza la pantalla. Un mensaje por línea.</p>
+    <textarea class="campo" id="campoTicker" rows="7">${esc(CONTENIDO.ticker.join('\n'))}</textarea>
+    <p class="ayuda">Si en Ajustes tienes activados los titulares en vivo, solo se muestra tu primera línea y el resto son titulares reales del RSS.</p>
+    <button class="btn azul" style="margin-top:12px" onclick="guardarTicker()">Aplicar ticker</button>
+  </div>`;
+}
+
+function vistaAjustes(){
+  const yt = AJUSTES.youtube, r = AJUSTES.redes, v = AJUSTES.vivo;
+  const pls = (yt.playlists||[]).map(p=>`${p.nombre} | ${p.id}`).join('\n');
+  return `<div class="tarjeta">
+    <h2>⚙️ Ajustes</h2>
+    <p class="intro">Configuración general del portal.</p>
+
+    <label class="etiqueta">🔴 Noticias en vivo</label>
+    <select class="campo" id="ajVivo">
+      <option value="1" ${v.activo?'selected':''}>Activadas — el portal se llena solo</option>
+      <option value="0" ${!v.activo?'selected':''}>Desactivadas — solo mi contenido</option>
+    </select>
+
+    <label class="etiqueta">📰 Fuente RSS principal</label>
+    <input class="campo" id="ajFuente" value="${esc(v.fuentePrincipal)}" placeholder="https://vanguardia.com.mx/rss.xml">
+
+    <label class="etiqueta">📍 Región para las noticias locales</label>
+    <input class="campo" id="ajLocal" value="${esc(v.consultaLocal)}" placeholder="Ej. Saltillo Coahuila">
+
+    <label class="etiqueta">Ticker con titulares en vivo</label>
+    <select class="campo" id="ajTickerVivo">
+      <option value="1" ${v.tickerEnVivo?'selected':''}>Sí, mostrar titulares reales</option>
+      <option value="0" ${!v.tickerEnVivo?'selected':''}>No, solo mis mensajes</option>
+    </select>
+
+    <label class="etiqueta">📻 URL del stream de radio</label>
+    <input class="campo" id="ajRadio" value="${esc(AJUSTES.radioStreamURL)}" placeholder="https://stream.zeno.fm/...">
+    <p class="ayuda">Mientras esté vacía, el botón de play de la radio no hace nada.</p>
+
+    <label class="etiqueta">▶️ ID del canal de YouTube (empieza con UC)</label>
+    <input class="campo" id="ajCanal" value="${esc(yt.channelID)}" placeholder="UCxxxxxxxxxxxxxxxx">
+
+    <label class="etiqueta">Listas de reproducción (una por línea: Nombre | ID)</label>
+    <textarea class="campo" id="ajListas" rows="3" placeholder="Noticieros | PLxxxx">${esc(pls)}</textarea>
+
+    <label class="etiqueta">📘 Facebook</label>
+    <input class="campo" id="ajFb" value="${esc(r.facebook)}">
+    <label class="etiqueta">📸 Instagram</label>
+    <input class="campo" id="ajIg" value="${esc(r.instagram)}">
+    <label class="etiqueta">▶️ YouTube canal personal</label>
+    <input class="campo" id="ajYtP" value="${esc(r.ytPersonal)}">
+    <label class="etiqueta">▶️ YouTube Pulso Noticioso</label>
+    <input class="campo" id="ajYtN" value="${esc(r.ytPulso)}">
+
+    <button class="btn azul" style="margin-top:16px" onclick="guardarAjustes()">Aplicar ajustes</button>
+
+    <p class="ayuda" style="margin-top:18px">
+      🔑 <b>La contraseña no se cambia aquí.</b> Vive cifrada en Cloudflare
+      (Settings → Environment variables → <code>ADMIN_PASSWORD</code>). Cambiarla ahí
+      y redesplegar es todo lo que hace falta: no se toca ni una línea de código.
+    </p>
+  </div>`;
+}
+
+function formNota(n, coleccion, idx){
+  const cats = CATS.map(([v,l])=>`<option value="${v}" ${n.cat===v?'selected':''}>${l}</option>`).join('');
+  const opciones = IMAGENES.map(i=>
+    `<option value="${esc(i.path)}" ${n.img===i.path?'selected':''}>${esc(i.path.split('/').pop())}</option>`).join('');
+  return `
+  <div class="form-nota">
+    <label class="etiqueta">Etiqueta (el texto rojo de la tarjeta)</label>
+    <input id="fEtq" class="campo" value="${esc(n.etq)}" placeholder="Ej. Última hora">
+
+    <label class="etiqueta">Arte de portada (si la nota no tiene foto)</label>
+    <select id="fCat" class="campo">${cats}</select>
+
+    <label class="etiqueta">📷 Foto de la nota</label>
+    <!-- El path de la foto vive en un campo oculto: el usuario nunca escribe una
+         URL a mano, solo elige un archivo o una foto ya subida. -->
+    <input type="hidden" id="fImg" value="${esc(n.img||'')}">
+    <div class="soltar" id="zonaFoto">
+      <b>📁 Elegir foto de tu equipo</b>
+      <small>o arrástrala aquí — jpg, png, webp o gif · máx. 5 MB</small>
+      <input type="file" id="inputFoto" accept="image/jpeg,image/png,image/webp,image/gif" hidden>
+    </div>
+    <div id="fSubiendo" class="progreso-subida"></div>
+    <div id="fImgPrev" class="previa-img">${n.img?`<img src="${esc(n.img)}" onerror="this.parentElement.innerHTML='<span>⚠️ No se pudo cargar esa imagen</span>'">`:''}</div>
+    ${n.img?`<button class="btn gris" style="margin-top:6px" onclick="quitarFoto()">✕ Quitar la foto</button>`:''}
+
+    <label class="etiqueta">…o reutiliza una que ya subiste</label>
+    <select id="fImgSel" class="campo" onchange="elegirFoto(this.value)">
+      <option value="">— Sin foto (se usa el arte generado) —</option>
+      ${opciones}
+    </select>
+
+    <label class="etiqueta">Título</label>
+    <input id="fTit" class="campo" value="${esc(n.tit)}">
+
+    <label class="etiqueta">Resumen (lo que se lee en la tarjeta)</label>
+    <textarea id="fRes" class="campo" rows="2">${esc(n.res)}</textarea>
+
+    <label class="etiqueta">Cuerpo de la nota</label>
+    <textarea id="fCuerpo" class="campo" rows="8">${esc((n.cuerpo||[]).join('\n\n'))}</textarea>
+    <p class="ayuda">Separa cada párrafo con una línea vacía.</p>
+
+    <label class="etiqueta">Firma / fecha</label>
+    <input id="fMeta" class="campo" value="${esc(n.meta)}" placeholder="Redacción · 17 de julio">
+
+    <div class="form-botones">
+      <button class="btn azul" onclick="guardarNota('${coleccion}',${idx})">💾 Guardar nota</button>
+      ${idx>=0?'<button class="btn gris" onclick="render()">Cancelar</button>':''}
+    </div>
+  </div>`;
+}
+
+/* =============================================================================
+   ACCIONES (expuestas en window porque el HTML las llama con onclick)
+   ========================================================================== */
+window.cambiarModoDestacada = v => {
+  CONTENIDO.destacada.auto = (v === '1');
+  guardarBorrador(); render();
+};
+window.previaFoto = url => {
+  const p = $('fImgPrev');
+  if(!url || !url.trim()){ p.innerHTML = ''; return; }
+  p.innerHTML = `<img src="${esc(url.trim())}" onerror="this.parentElement.innerHTML='<span>⚠️ No se pudo cargar esa imagen</span>'">`;
+};
+window.elegirFoto = path => {
+  $('fImg').value = path;
+  previaFoto(path);
+};
+window.quitarFoto = () => {
+  $('fImg').value = '';
+  if($('fImgSel')) $('fImgSel').value = '';
+  previaFoto('');
+  $('fSubiendo').innerHTML = '';
+  toast('Foto quitada. La nota usará el arte generado.', 'ok');
+};
+
+/**
+ * Sube la foto elegida en el formulario de una nota y la engancha a esa nota.
+ *
+ * La sección y el título salen del propio formulario, así el archivo cumple la
+ * convención de nombres sin que el usuario tenga que saber que existe: solo
+ * elige una foto de su equipo y ya.
+ *
+ * La subida es inmediata (un commit), no espera a Publicar. Es a propósito: si
+ * esperara, habría que guardar la imagen en memoria y el borrador de
+ * localStorage reventaría con dos o tres fotos.
+ */
+async function subirFotoNota(archivos){
+  const archivo = archivos && archivos[0];
+  if(!archivo) return;
+  const cont = $('fSubiendo');
+  if(MODO_PREVIA){
+    cont.innerHTML = '<div class="error">✕ En vista previa no se pueden subir fotos: no hay servidor.</div>';
+    return;
+  }
+  if(!/\.(jpe?g|png|webp|gif)$/i.test(archivo.name)){
+    cont.innerHTML = '<div class="error">✕ Solo se admiten jpg, png, webp o gif.</div>';
+    return;
+  }
+  if(archivo.size > 5*1024*1024){
+    cont.innerHTML = `<div class="error">✕ Pesa ${(archivo.size/1048576).toFixed(1)} MB y el máximo son 5 MB. Redúcela antes de subirla.</div>`;
+    return;
+  }
+  cont.innerHTML = `<div>⏳ Subiendo ${esc(archivo.name)}…</div>`;
+  try{
+    const base64 = await leerComoBase64(archivo);
+    const seccion = SECCIONES_IMG.includes(COL_ACTUAL) ? COL_ACTUAL : 'inicio';
+    const titulo = $('fTit') ? $('fTit').value.trim() : '';
+    const path = nombreConvencion(seccion, titulo, archivo);
+    await api('upload', { path, base64 });
+    IMAGENES.push({ path });
+    $('fImg').value = path;
+
+    // La vista previa se pinta desde el archivo LOCAL, no desde el path del repo.
+    // Motivo: la foto ya está commiteada, pero GitHub Pages tarda 30-60 s en
+    // reconstruir. Si apuntáramos al path, durante ese minuto daría 404 y
+    // parecería que la subida falló, cuando en realidad fue bien.
+    $('fImgPrev').innerHTML = '';
+    const img = document.createElement('img');
+    img.src = URL.createObjectURL(archivo);
+    img.onload = () => URL.revokeObjectURL(img.src); // no dejamos el blob en memoria
+    $('fImgPrev').appendChild(img);
+
+    cont.innerHTML = `<div class="ok">✓ Foto subida y enganchada a esta nota.</div>`;
+    toast('Foto subida. Guarda la nota y luego pulsa Publicar.', 'ok');
+  }catch(e){
+    cont.innerHTML = `<div class="error">✕ No se pudo subir: ${esc(e.message)}</div>`;
+  }
+}
+
+/** Conecta el selector de archivos y el arrastre del formulario de nota. */
+function conectarZonaFoto(){
+  const zona = $('zonaFoto');
+  if(!zona) return;
+  const input = $('inputFoto');
+  zona.addEventListener('click', ()=> input.click());
+  input.addEventListener('change', ()=>{
+    subirFotoNota([...input.files]);
+    input.value = ''; // permite volver a elegir el mismo archivo
+  });
+  ['dragenter','dragover'].forEach(ev=>
+    zona.addEventListener(ev, e=>{ e.preventDefault(); zona.classList.add('encima'); }));
+  ['dragleave','drop'].forEach(ev=>
+    zona.addEventListener(ev, e=>{ e.preventDefault(); zona.classList.remove('encima'); }));
+  zona.addEventListener('drop', e=> subirFotoNota([...e.dataTransfer.files]));
+}
+window.editarNota = i => {
+  $('formNota').innerHTML = formNota(refColeccion(COL_ACTUAL)[i], COL_ACTUAL, i);
+  conectarZonaFoto();
+  $('formNota').scrollIntoView({behavior:'smooth', block:'nearest'});
+};
+window.nuevaNota = () => {
+  const catDef = ['nacional','local','internacional','deportes'].includes(COL_ACTUAL) ? COL_ACTUAL
+               : (['politika','dimes','columnas'].includes(COL_ACTUAL) ? 'opinion' : 'pulso');
+  const hoy = new Date().toLocaleDateString('es-MX',{day:'numeric',month:'long'});
+  $('formNota').innerHTML = formNota(
+    { cat:catDef, etq:'Nueva', tit:'', res:'', cuerpo:[], meta:`Redacción · ${hoy}`, img:'' }, COL_ACTUAL, -2);
+  conectarZonaFoto();
+  $('formNota').scrollIntoView({behavior:'smooth', block:'nearest'});
+};
+window.guardarNota = (coleccion, idx) => {
+  const n = {
+    img: $('fImg').value.trim(),
+    cat: $('fCat').value,
+    etq: $('fEtq').value.trim() || 'Nota',
+    tit: $('fTit').value.trim(),
+    res: $('fRes').value.trim(),
+    cuerpo: $('fCuerpo').value.split(/\n\s*\n/).map(p=>p.trim()).filter(Boolean),
+    meta: $('fMeta').value.trim()
+  };
+  if(!n.tit){ toast('El título es obligatorio.', 'error'); return; }
+
+  if(coleccion === 'destacada'){
+    Object.assign(CONTENIDO.destacada, n);
+    // Escribir la destacada a mano implica quererla a mano: se apaga el modo auto.
+    CONTENIDO.destacada.auto = false;
+  }else{
+    const lista = refColeccion(coleccion);
+    if(idx >= 0) Object.assign(lista[idx], n);
+    else lista.unshift(n); // las notas nuevas van arriba
+  }
+  guardarBorrador(); render();
+  toast('Nota guardada en el borrador. Pulsa Publicar cuando quieras que se vea.', 'ok');
+};
+window.moverNota = (i,d) => {
+  const l = refColeccion(COL_ACTUAL);
+  const [x] = l.splice(i,1); l.splice(i+d,0,x);
+  guardarBorrador(); render();
+};
+window.eliminarNota = i => {
+  const l = refColeccion(COL_ACTUAL);
+  if(confirm(`¿Eliminar la nota "${l[i].tit}"?`)){
+    l.splice(i,1);
+    guardarBorrador(); render();
+  }
+};
+window.hacerDestacada = i => {
+  const anterior = clon(CONTENIDO.destacada);
+  anterior.auto = false;
+  delete anterior._id;
+  const nueva = CONTENIDO.laterales.splice(i,1)[0];
+  delete nueva._id;
+  CONTENIDO.destacada = Object.assign(nueva, { auto:false });
+  CONTENIDO.laterales.splice(i,0,anterior);
+  guardarBorrador(); render();
+  toast('Notas intercambiadas: la lateral ahora es la destacada.', 'ok');
+};
+window.guardarTicker = () => {
+  CONTENIDO.ticker = $('campoTicker').value.split('\n').map(s=>s.trim()).filter(Boolean);
+  if(!CONTENIDO.ticker.length) CONTENIDO.ticker = RESPALDO.ticker.slice();
+  guardarBorrador(); render();
+  toast('Ticker aplicado al borrador.', 'ok');
+};
+window.guardarAjustes = () => {
+  AJUSTES.vivo.activo         = $('ajVivo').value === '1';
+  AJUSTES.vivo.fuentePrincipal= $('ajFuente').value.trim() || 'https://vanguardia.com.mx/rss.xml';
+  AJUSTES.vivo.consultaLocal  = $('ajLocal').value.trim() || 'México';
+  AJUSTES.vivo.tickerEnVivo   = $('ajTickerVivo').value === '1';
+  AJUSTES.radioStreamURL      = $('ajRadio').value.trim();
+  AJUSTES.youtube.channelID   = $('ajCanal').value.trim();
+  AJUSTES.youtube.playlists   = $('ajListas').value.split('\n')
+    .map(l=>l.split('|').map(s=>s.trim()))
+    .filter(a=>a.length===2 && a[0] && a[1])
+    .map(([nombre,id])=>({nombre,id}));
+  AJUSTES.redes.facebook  = $('ajFb').value.trim();
+  AJUSTES.redes.instagram = $('ajIg').value.trim();
+  AJUSTES.redes.ytPersonal= $('ajYtP').value.trim();
+  AJUSTES.redes.ytPulso   = $('ajYtN').value.trim();
+  guardarBorrador(); render();
+  toast('Ajustes aplicados al borrador.', 'ok');
+};
+window.borrarImagen = borrarImagen;
+
+/* ===== Zona de arrastre ===== */
+function conectarZonaSoltar(){
+  const zona = $('zonaSoltar');
+  if(!zona) return;
+  const input = $('inputArchivos');
+
+  zona.addEventListener('click', ()=> input.click());
+  input.addEventListener('change', ()=>{
+    lanzarSubida([...input.files]);
+    input.value = ''; // permite volver a elegir el mismo archivo
+  });
+  ['dragenter','dragover'].forEach(ev=>
+    zona.addEventListener(ev, e=>{ e.preventDefault(); zona.classList.add('encima'); }));
+  ['dragleave','drop'].forEach(ev=>
+    zona.addEventListener(ev, e=>{ e.preventDefault(); zona.classList.remove('encima'); }));
+  zona.addEventListener('drop', e=> lanzarSubida([...e.dataTransfer.files]));
+}
+function lanzarSubida(archivos){
+  const seccion = $('subirSeccion') ? $('subirSeccion').value : 'inicio';
+  const titulo = $('subirTitulo') ? $('subirTitulo').value.trim() : '';
+  subirArchivos(archivos, seccion, titulo, ()=>{
+    // Se repinta para que las fotos nuevas aparezcan ya en la galería y en los
+    // desplegables de foto de cada nota.
+    setTimeout(render, 400);
+  });
+}
+
+/* =============================================================================
+   ARRANQUE
+   ========================================================================== */
+async function arrancarApp(){
+  $('pantallaLogin').classList.add('oculto');
+  $('app').classList.add('visible');
+
+  if(MODO_PREVIA){
+    $('avisoPrevia').classList.remove('oculto');
+    $('pastillaModo').className = 'pastilla previa';
+    $('pastillaModo').textContent = 'Vista previa';
+  }
+
+  await cargarEstado();
+  render();
+}
+
+$('btnEntrar').addEventListener('click', entrar);
+$('campoClave').addEventListener('keydown', e=>{ if(e.key==='Enter') entrar(); });
+$('btnSalir').addEventListener('click', salir);
+$('btnPublicar').addEventListener('click', publicar);
+$('btnDescartar').addEventListener('click', descartar);
+$('selectorColeccion').addEventListener('change', e=>{ COL_ACTUAL = e.target.value; render(); });
+
+// Aviso al cerrar con cambios sin publicar. El navegador ignora el texto y
+// muestra el suyo, pero devolver algo es lo que dispara el diálogo.
+window.addEventListener('beforeunload', e=>{
+  if(HAY_CAMBIOS && !MODO_PREVIA){ e.preventDefault(); e.returnValue = ''; }
+});
+
+/* Sesión recordada: si hay clave guardada, se entra sola. */
+(async function(){
+  let guardada = '';
+  try{ guardada = localStorage.getItem('pulsoClave') || sessionStorage.getItem('pulsoClave') || ''; }catch(e){}
+  if(!guardada){ $('campoClave').focus(); return; }
+
+  const r = await intentarEntrar(guardada);
+  if(r.estado === 'rechazado'){
+    // La clave guardada ya no sirve (la rotaron en Cloudflare): se limpia.
+    try{ localStorage.removeItem('pulsoClave'); sessionStorage.removeItem('pulsoClave'); }catch(e){}
+    $('errorLogin').textContent = 'La contraseña guardada ya no es válida.';
+    $('campoClave').focus();
+    return;
+  }
+  CLAVE = guardada;
+  MODO_PREVIA = (r.estado === 'sin-backend');
+  await arrancarApp();
+})();
+</script>
+</body>
+</html>
