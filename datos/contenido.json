@@ -7,72 +7,33 @@
     "📱 Envía tu reporte ciudadano por WhatsApp desde el botón del portal"
   ],
   "destacada": {
-    "auto": true,
-    "img": "",
-    "cat": "pulso",
+    "auto": false,
+    "img": "contenido/imagenes/destacada--latiendo-por-la-verdad--mrsgte0jn0.jpg",
+    "cat": "nacional",
     "etq": "Pulso Noticioso",
-    "tit": "Latiendo por la Verdad",
+    "tit": "La Laguana de Coahuila y sus Tolvaneras o lluvia de arena.",
     "res": "Noticias de México y el mundo, deportes, análisis, radio en vivo y video.",
     "cuerpo": [
       "Pulso Noticioso es un espacio informativo con cobertura nacional, local e internacional, radio virtual en vivo y canal de video.",
       "La participación ciudadana es el corazón del proyecto: envíanos tus reportes por WhatsApp con el botón verde."
     ],
-    "meta": "Redacción"
+    "meta": "Hoy Va Inglaterra por el Tercer Lugar de Copa del Mundo"
   },
   "laterales": [],
-  "inicio": [
-    {
-      "img": "contenido/imagenes/inicio--26687--mrr03p2qxx.jpg",
-      "cat": "pulso",
-      "etq": "Nueva",
-      "tit": "Sheinbum llegará  esta noche a Nueva York",
-      "res": "Utiliza avión de fuerza área para ir a la final del mundial, por invitación de Trump",
-      "cuerpo": [
-        "Claudia Sheinbaum viajará en un avión de la Fuerza Aérea para asistir a la final del Mundial",
-        "La presidenta de México, , viajará a bordo de una aeronave de la Fuerza Aérea Mexicana para asistir a la final de la Copa del Mundo, uno de los eventos deportivos más importantes del planeta.",
-        "El traslado de la mandataria se realizará bajo estrictas medidas de seguridad y coordinación entre autoridades federales y militares, con el objetivo de garantizar su llegada al partido que definirá al nuevo campeón del mundo.",
-        "Fuentes cercanas al Gobierno federal señalaron que la utilización del avión oficial responde a cuestiones logísticas y de seguridad, debido a la relevancia internacional del encuentro deportivo y a la agenda presidencial.",
-        "Se espera que, además de presenciar la final del Mundial, la presidenta sostenga reuniones y encuentros protocolarios con representantes de otros países asistentes al evento.",
-        "Hasta el momento, la Presidencia de la República no ha dado a conocer mayores detalles sobre el itinerario ni sobre las actividades adicionales que realizará durante su estancia."
-      ],
-      "meta": "Redacción · 18 de julio"
-    },
-    {
-      "img": "contenido/imagenes/inicio--26676--mrqyfcywkx.jpg",
-      "cat": "pulso",
-      "etq": "Nueva",
-      "tit": "Se retrasa vuelo de Sheinbum por mal clima",
-      "res": "Presidenta de México retrasa vuelo",
-      "cuerpo": [
-        "Presidenta de México retrasa su llegada a Nueva York por ajustes en la agenda oficial",
-        "Ciudad de México.— La presidenta de México, , informó sobre un retraso en su viaje oficial a Nueva York debido a ajustes de última hora en su agenda de trabajo y a las condiciones operativas del vuelo presidencial.",
-        "De acuerdo con fuentes del Gobierno Federal, la mandataria tenía previsto arribar a la ciudad estadounidense durante la mañana; sin embargo, la salida se pospuso varias horas para atender asuntos relacionados con reuniones de gabinete y compromisos institucionales.",
-        "El equipo de comunicación de la Presidencia señaló que la visita a Nueva York mantiene su programa original, el cual contempla encuentros con representantes diplomáticos, empresarios y miembros de la comunidad mexicana radicada en Estados Unidos.",
-        "Hasta el momento, las autoridades no han reportado mayores contratiempos y se espera que la presidenta continúe con sus actividades oficiales una vez que llegue a su destino."
-      ],
-      "meta": "Redacción · 18 de julio"
-    }
-  ],
+  "inicio": [],
   "secciones": {
-    "nacional": [],
-    "local": [
+    "nacional": [
       {
-        "img": "contenido/imagenes/local--26679--mrqylk1iie.jpg",
-        "cat": "local",
+        "img": "",
+        "cat": "nacional",
         "etq": "Nueva",
-        "tit": "Criterios 88.9 ffm",
-        "res": "La primera en Saltillo",
-        "cuerpo": [
-          "“Criterios” de 88.9 FM consolida su espacio de análisis informativo en Saltillo",
-          "Saltillo, Coahuila.– El programa radiofónico “Criterios”, transmitido a través de la frecuencia 88.9 FM, continúa consolidándose como uno de los espacios de análisis y opinión más escuchados en la región sureste de Coahuila.",
-          "Bajo la conducción de Guadalupe Olvera, junto con un equipo de colaboradores, la emisión aborda diariamente los temas de mayor relevancia en el ámbito político, social y económico, ofreciendo a la audiencia un panorama informativo sobre los acontecimientos locales, nacionales e internacionales.",
-          "Con un formato basado en el debate y la reflexión, “Criterios” se ha convertido en un referente para los radioescuchas interesados en conocer distintas perspectivas sobre la actualidad, además de dar seguimiento a los asuntos que impactan directamente a la comunidad saltillense.",
-          "A lo largo de sus transmisiones, el programa ha destacado por incluir entrevistas, comentarios especializados y análisis de los principales acontecimientos que marcan la agenda pública, fortaleciendo así el vínculo entre los medios de comunicación y la ciudadanía.",
-          "“Criterios” se transmite por el 88.9 FM de lunes a viernes, manteniendo un espacio dedicado a la información y al intercambio de ideas en el estado de Coahuila."
-        ],
+        "tit": "En la Semana  Huachicolera  o Robo de Combustible, los Quintos involucrados estan Cayendo.",
+        "res": "",
+        "cuerpo": [],
         "meta": "Redacción · 18 de julio"
       }
     ],
+    "local": [],
     "internacional": [],
     "deportes": [],
     "politika": [],
