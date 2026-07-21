@@ -740,7 +740,7 @@ const RESPALDO = {
 const AJUSTES_RESPALDO = {
   radioStreamURL: '',
   youtube: { channelID: '', playlists: [] },
-  vivo: { activo: true, fuentePrincipal: 'https://vanguardia.com.mx/rss.xml', consultaLocal: 'México', tickerEnVivo: true },
+  vivo: { activo: true, fuentePrincipal: 'https://eldiariodecoahuila.com.mx/feed/', respaldoGoogle: false, consultaLocal: 'Saltillo Coahuila', tickerEnVivo: true },
   redes: { facebook: '', instagram: '', ytPersonal: '', ytPulso: '' }
 };
 
@@ -1109,8 +1109,8 @@ function feedsRespaldo(){
   };
 }
 const CATMAP = [
-  ['local', /coahuila|saltillo|torre[oó]n|monclova|ramos|piedras negras|acu[nñ]a|regi[oó]n/i],
-  ['deportes', /deporte|f[uú]tbol|tenis|b[eé]isbol|box|nfl|nba|basquet|americano|liga|mundial/i],
+  ['local', /local|policiaca|ramos arizpe|gu[ií]a urbana|estatal|carbon[ií]fera|laguna|sureste|coahuila|saltillo|torre[oó]n|monclova|piedras negras|acu[nñ]a|regi[oó]n/i],
+  ['deportes', /acci[oó]n|deporte|f[uú]tbol|saraperos|sprint|top spin|cancha|en forma|off road|tenis|b[eé]isbol|box|nfl|nba|basquet|americano|liga|mundial|golf/i],
   ['internacional', /internacional|mundo/i],
   ['nacional', /m[eé]xico|noticias|informaci[oó]n|nacional|pol[ií]tica|dinero/i]
 ];
@@ -1210,18 +1210,21 @@ async function cargarVivo(){
     console.warn('Fuente RSS principal no disponible; se usan los feeds de respaldo.', e);
   }
 
-  // Feeds de respaldo por sección: si la fuente principal no trajo suficiente
-  // para una sección, se completa con Google News. Nunca dejar una sección vacía.
-  const resp = feedsRespaldo();
-  for(const sec of Object.keys(buckets)){
-    if(buckets[sec].length < 3){
-      try{
-        const data = await fetchFeed(resp[sec]);
-        for(const it of data.items){
-          if(buckets[sec].length >= cupos[sec]) break;
-          buckets[sec].push(it);
-        }
-      }catch(e){}
+  // Feeds de respaldo (Google News): SOLO si está activado en ajustes
+  // (respaldoGoogle: true). Apagado por defecto para que no aparezcan
+  // notas de otros periódicos como referencia.
+  if(CONFIG.vivo && CONFIG.vivo.respaldoGoogle){
+    const resp = feedsRespaldo();
+    for(const sec of Object.keys(buckets)){
+      if(buckets[sec].length < 3){
+        try{
+          const data = await fetchFeed(resp[sec]);
+          for(const it of data.items){
+            if(buckets[sec].length >= cupos[sec]) break;
+            buckets[sec].push(it);
+          }
+        }catch(e){}
+      }
     }
   }
   limpiarEsqueletos();

@@ -297,7 +297,7 @@ const RESPALDO = {
 const AJUSTES_RESPALDO = {
   radioStreamURL:'',
   youtube:{ channelID:'', playlists:[] },
-  vivo:{ activo:true, fuentePrincipal:'https://vanguardia.com.mx/rss.xml', consultaLocal:'Saltillo Coahuila', tickerEnVivo:true },
+  vivo:{ activo:true, fuentePrincipal:'https://eldiariodecoahuila.com.mx/feed/', respaldoGoogle:false, consultaLocal:'Saltillo Coahuila', tickerEnVivo:true },
   redes:{ facebook:'', instagram:'', ytPersonal:'', ytPulso:'' }
 };
 
@@ -796,7 +796,7 @@ function vistaAjustes(){
     </select>
 
     <label class="etiqueta">📰 Fuente RSS principal</label>
-    <input class="campo" id="ajFuente" value="${esc(v.fuentePrincipal)}" placeholder="https://vanguardia.com.mx/rss.xml">
+    <input class="campo" id="ajFuente" value="${esc(v.fuentePrincipal)}" placeholder="https://eldiariodecoahuila.com.mx/feed/">
 
     <label class="etiqueta">📍 Región para las noticias locales</label>
     <input class="campo" id="ajLocal" value="${esc(v.consultaLocal)}" placeholder="Ej. Saltillo Coahuila">
@@ -1050,7 +1050,7 @@ window.guardarTicker = () => {
 };
 window.guardarAjustes = () => {
   AJUSTES.vivo.activo         = $('ajVivo').value === '1';
-  AJUSTES.vivo.fuentePrincipal= $('ajFuente').value.trim() || 'https://vanguardia.com.mx/rss.xml';
+  AJUSTES.vivo.fuentePrincipal= $('ajFuente').value.trim() || 'https://eldiariodecoahuila.com.mx/feed/';
   AJUSTES.vivo.consultaLocal  = $('ajLocal').value.trim() || 'México';
   AJUSTES.vivo.tickerEnVivo   = $('ajTickerVivo').value === '1';
   AJUSTES.radioStreamURL      = $('ajRadio').value.trim();

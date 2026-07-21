@@ -109,7 +109,7 @@ Un mensaje por línea.
 ## 7. Ajustes
 
 - **Noticias en vivo** — activadas/desactivadas. Si las apagas, solo se ve tu contenido.
-- **Fuente RSS principal** — ahora: `https://vanguardia.com.mx/rss.xml`
+- **Fuente RSS principal** — ahora: `https://eldiariodecoahuila.com.mx/feed/`
 - **Región para noticias locales** — ahora: `Saltillo Coahuila`
 - **📻 URL del stream de radio** — **está vacía**. Hasta que la pongas, el botón de play no hace nada.
 - **▶️ ID del canal de YouTube** — ya configurado. Por eso "En vivo" y "Últimos videos" funcionan solos.
