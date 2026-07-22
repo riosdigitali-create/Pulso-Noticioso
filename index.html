@@ -1100,6 +1100,8 @@ window.addEventListener('scroll', ()=>{
    navegador. Es un tercero gratuito y sin garantías, por eso todo el bloque va
    envuelto en try/catch: si cae, se ven las notas propias y el sitio sigue.
    ========================================================================== */
+// URL del Worker propio que trae las noticias sorteando el bloqueo CORS de la fuente.
+const API_NOTICIAS = 'https://pulso-api.riosdigitali.workers.dev/api/noticias';
 const GN = 'hl=es-419&gl=MX&ceid=MX:es-419';
 function feedsRespaldo(){
   const q = encodeURIComponent((CONFIG.vivo&&CONFIG.vivo.consultaLocal)||'México');
@@ -1156,10 +1158,28 @@ async function fetchFeed(url){
   // con foto destacada y categorías incluidas.
   const mWP = url.match(/^https?:\/\/(?:www\.)?(eldiariodecoahuila\.com\.mx)/i);
   if(mWP){
-    const res = await fetch('https://'+mWP[1]+'/wp-json/wp/v2/posts?per_page=40&_embed');
-    const posts = await res.json();
+    // IMPORTANTE: nada de `_embed`. Con _embed la respuesta pesa varios MB y el
+    // servidor tarda tanto que el navegador se rinde y la portada queda vacía.
+    // Todo lo que necesitamos ya viene en la respuesta ligera:
+    //   · la foto  -> jetpack_featured_media_url
+    //   · la sección -> class_list (ej. "category-locales")
+    // Además se pide `_fields` para recortar aún más y se corta a los 15 s.
+    // El Diario bloquea las peticiones que salen del NAVEGADOR (su firewall no
+    // manda cabeceras CORS: el fetch directo muere en ~50 ms con "Failed to
+    // fetch") y su RSS tampoco acepta a terceros. Por eso pasamos por nuestro
+    // propio Worker, que hace la petición desde un servidor —donde el CORS no
+    // aplica— y nos la devuelve con permiso para este dominio.
+    const ctrl = new AbortController();
+    const alarma = setTimeout(()=>ctrl.abort(), 15000);
+    let posts;
+    try{
+      const res = await fetch(API_NOTICIAS, {signal: ctrl.signal});
+      posts = await res.json();
+    } finally { clearTimeout(alarma); }
+    if(posts && posts.ok === false) throw new Error(posts.error||'fuente no disponible');
     if(!Array.isArray(posts) || !posts.length) throw new Error('sin datos');
     const dec = s => { const t=document.createElement('textarea'); t.innerHTML=s||''; return t.value; };
+    const bonito = s => s.charAt(0).toUpperCase()+s.slice(1);
     return {
       feed: { title: 'El Diario de Coahuila' },
       items: posts.map(p=>({
@@ -1168,8 +1188,8 @@ async function fetchFeed(url){
         pubDate: (p.date||'').replace('T',' '),
         description: (p.excerpt && p.excerpt.rendered) || '',
         content: '',
-        categories: (p._embedded && p._embedded['wp:term'] ? p._embedded['wp:term'].flat().map(t=>t&&t.name).filter(Boolean) : []),
-        thumbnail: (p._embedded && p._embedded['wp:featuredmedia'] && p._embedded['wp:featuredmedia'][0] && p._embedded['wp:featuredmedia'][0].source_url) || '',
+        categories: (p.class_list||[]).filter(c=>/^category-/.test(c)).map(c=>bonito(c.replace('category-','').replace(/-/g,' '))),
+        thumbnail: p.jetpack_featured_media_url || '',
         enclosure: {}
       }))
     };
