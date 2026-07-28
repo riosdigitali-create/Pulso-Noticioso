@@ -33,7 +33,19 @@
         "meta": "Redacción · 18 de julio"
       }
     ],
-    "local": [],
+    "local": [
+      {
+        "img": "contenido/imagenes/local--29008--ms51x8jy9w.jpg",
+        "cat": "local",
+        "etq": "Nueva",
+        "tit": "Prueba",
+        "res": "Prueba",
+        "cuerpo": [
+          "Como estas"
+        ],
+        "meta": "Redacción · 28 de julio"
+      }
+    ],
     "internacional": [],
     "deportes": [],
     "politika": [],
