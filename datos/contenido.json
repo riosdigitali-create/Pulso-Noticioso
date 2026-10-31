@@ -8,68 +8,21 @@
   ],
   "destacada": {
     "auto": false,
-    "img": "contenido/imagenes/destacada--es-blanca-cruz-presidenta--mvt0o0yoei.png",
+    "img": "contenido/imagenes/destacada--latiendo-por-la-verdad--mrsgte0jn0.jpg",
     "cat": "nacional",
     "etq": "Pulso Noticioso",
-    "tit": "Fallece el ING  Cárdenas",
+    "tit": "La Laguana de Coahuila y sus Tolvaneras o lluvia de Arena.",
     "res": "Noticias de México y el mundo, deportes, análisis, radio en vivo y video.",
     "cuerpo": [
-      "FALLECE CUAUHTÉMOC CÁRDENAS, FIGURA HISTÓRICA DE LA POLÍTICA MEXICANA",
-      "Ciudad de México | 28 de octubre de 2026.",
-      "El ingeniero Cuauhtémoc Cárdenas Solórzano, uno de los personajes más relevantes de la izquierda mexicana y fundador del Partido de la Revolución Democrática (PRD), falleció a los 92 años de edad, de acuerdo con reportes difundidos por medios nacionales.",
-      "Hijo del expresidente de México Lázaro Cárdenas del Río, Cuauhtémoc Cárdenas desarrolló una extensa trayectoria en la vida pública del país, marcada por su participación en la construcción de una alternativa política al predominio del Partido Revolucionario Institucional (PRI).",
-      "Durante su carrera se desempeñó como gobernador de Michoacán, cargo que ocupó de 1980 a 1986, y contendió en tres ocasiones por la Presidencia de la República: en 1988, 1994 y 2000.",
-      "En 1989 participó en la fundación del PRD, organización que se convirtió en una de las principales fuerzas opositoras del país. Posteriormente, en 1997, hizo historia al convertirse en el primer jefe de Gobierno del entonces Distrito Federal elegido mediante el voto ciudadano.",
-      "Su trayectoria quedó vinculada a episodios fundamentales de la transformación política de México, particularmente a las exigencias de apertura democrática, pluralidad electoral y participación ciudadana.",
-      "Hasta el momento, no se han dado a conocer de manera concluyente las causas de su fallecimiento.",
-      "La noticia representa un acontecimiento relevante para la historia política nacional, por el papel que desempeñó durante décadas en la oposición política y en la evolución de la democracia mexicana.",
-      "Pulso Noticioso | Latiendo por la verdad."
+      "Pulso Noticioso es un espacio informativo con cobertura nacional, local e internacional, radio virtual en vivo y canal de video.",
+      "La participación ciudadana es el corazón del proyecto: envíanos tus reportes por WhatsApp con el botón verde."
     ],
-    "meta": "Se va el ingeniero Cárdenas"
+    "meta": "Hoy Va Inglaterra por el Tercer Lugar de Copa del Mundo"
   },
   "laterales": [],
-  "inicio": [
-    {
-      "img": "contenido/imagenes/inicio--44354--mvc1gqr53k.png",
-      "cat": "pulso",
-      "etq": "Nueva",
-      "tit": "Trudy  México en Alerta",
-      "res": "Huracán",
-      "cuerpo": [
-        "Alerta Meteorologica",
-        "Por Redacción | Pulso Noticioso",
-        "ALERTA METEOROLÓGICA EN EL PACÍFICO\n​El huracán Trudy bordea las costas de Jalisco y Colima: autoridades activan protocolos por fuertes lluvias y oleaje\n​CIUDAD DE MÉXICO — El huracán Trudy, actualmente en categoría 1 de la escala Saffir-Simpson, mantiene en alerta a las comunidades costeras del occidente mexicano mientras se desplaza con rumbo norte-noroeste, bordeando de manera paralela las costas de Colima y Jalisco.\n​De acuerdo con el reporte más reciente del Servicio Meteorológico Nacional (SMN) y el Centro Nacional de Huracanes (NHC), el sistema se debilitó tras haber alcanzado de manera repentina la categoría 3 en aguas abiertas del Pacífico. Pese a que los modelos de trayectoria proyectan que el ojo del ciclón permanecerá en el mar sin registrar un impacto directo en tierra firme, el amplio radio de sus bandas nubosas continúa descargando precipitaciones torrenciales sobre el occidente y sur del país.\n​Protección Civil ha reiterado el llamado a la precaución en los estados de Michoacán, Colima y Jalisco ante el riesgo latente de inundaciones repentinas, desbordamiento de ríos y arroyos, así como posibles deslaves en zonas montañosas.\n​En la franja costera, las capitanías de puerto han restringido la navegación menor debido a rachas de viento sostenidas y olas de entre 3 y 5 metros de altura. Se exhorta a los habitantes de zonas vulnerables y al sector turístico a seguir exclusivamente los comunicados oficiales y ubicar los refugios temporales habilitados ante cualquier contingencia."
-      ],
-      "meta": "Redacción · 17 de octubre"
-    },
-    {
-      "img": "contenido/imagenes/inicio--41098--muuhy7x98v.jpg",
-      "cat": "pulso",
-      "etq": "Nueva",
-      "tit": "Precaucion  por lluvias",
-      "res": "Recomendación",
-      "cuerpo": [
-        "Se recomienda a todos los que transitan por la red carretera de la  región sureste\nExtremar precauciones por la lluvia y bancos de neblina",
-        "Además de conducir conforme al reglamento de tránsito vigente  en elsado de Coahuila"
-      ],
-      "meta": "Redacción · 4 de octubre"
-    }
-  ],
+  "inicio": [],
   "secciones": {
     "nacional": [
-      {
-        "img": "",
-        "cat": "nacional",
-        "etq": "Nueva",
-        "tit": "El Costo de la Omisión en las carreteras de México",
-        "res": "Noticia de interés Nacional",
-        "cuerpo": [
-          "El costo de la omisión en las carreteras de México",
-          "​Por Ricardo Torres Mendoza",
-          "​El transporte de carga en México ha dejado de ser solo un indicador de desarrollo para convertirse en un termómetro de la crisis de gobernabilidad. La convocatoria a un paro nacional indefinido a partir de este lunes 26 de octubre no es un exabrupto político ni una medida irresponsable; es la respuesta desesperada de un sector al que se le exige mantener en movimiento la economía nacional mientras esquiva balas, extorsiones y abusos normativos en las carreteras.\n​Durante años, las autoridades han intentado catalogar la violencia vial como un problema \"focalizado\". La realidad en los corredores neurálgicos —como la México-Puebla, el Arco Norte, la México-Querétaro y las rutas hacia la frontera norte— desmiente el discurso oficial. Los vacíos de patrullaje de la Guardia Nacional han transformado estas arterias en verdaderas zonas de riesgo donde el robo violento, las cuotas ilegales y la impunidad son la norma diaria.\n​A este panorama de violencia se suma la presión fiscal. Los recortes y modificaciones a los estímulos fiscales de peaje contemplados en el Paquete Económico para 2027, sumados al cobro abusivo de grúas y corralones locales, ahogan la viabilidad financiera de miles de permisionarios. Exigir carreteras seguras, infraestructura en buen estado y un esquema fiscal justo no es una demanda desmedida, sino el derecho mínimo para operar.\n​Frente a esto, la respuesta gubernamental ha sido tibia. Aunque la Secretaría de Gobernación busca entablar mesas de negociación de última hora y la Presidencia recurre a indicadores estadísticos para matizar la percepción de inseguridad, la realidad del transportista no se resuelve en un escritorio. Minimizar el conflicto o etiquetar la protesta como una movilización con tintes políticos solo acelerará el descontento.\n​El impacto económico de este paro puede ser devastador. Los más de 21,000 cruces fronterizos diarios con Estados Unidos representan cerca de 1,800 millones de dólares en mercancías que hoy corren el riesgo de quedar varadas. Si bien la intención inicial del gremio contempla marchas lentas y manifestaciones pacíficas, la prolongación del conflicto o la insensibilidad de las autoridades podrían incitar al cierre total de rutas clave, desatando el desabasto de insumos industriales, alimentos y combustibles a nivel nacional.\n​La solución no requiere de narrativas de pacificación, sino de la recuperación efectiva de la seguridad en los caminos federales. Si la administración federal insiste en postergar acuerdos de fondo, la parálisis de las carreteras no solo detendrá el flujo de mercancías: terminará por frenar al país entero."
-        ],
-        "meta": "Redacción · 25 de octubre"
-      },
       {
         "img": "",
         "cat": "nacional",
@@ -80,77 +33,10 @@
         "meta": "Redacción · 18 de julio"
       }
     ],
-    "local": [
-      {
-        "img": "contenido/imagenes/local--7342--mvw2ha9fs7.webp",
-        "cat": "local",
-        "etq": "Nueva",
-        "tit": "La Esquina del Águila",
-        "res": "Columna  politica",
-        "cuerpo": [
-          "COLUMNA: ESQUINA DEL ÁGUILA\nTITULO: El legado de Cárdenas frente al poder sin ideas \nAUTOR: RICARDO TORRES\n29 de octubre de 2026",
-          "Hay momentos en los que el destino parece enviarnos un mensaje muy claro. La muerte de Cuauhtémoc Cárdenas Solórzano, ocurrida casi al mismo tiempo que la renuncia de Guadalupe Taddei a la presidencia del Instituto Nacional Electoral, no es una simple casualidad. Es una paradoja amarga. Por un lado, vemos cómo cae en crisis la institución que debe arbitrar nuestras elecciones, y por el otro, despedimos al hombre que dedicó su vida a construir, precisamente, un sistema donde el gobierno ya no pudiera meter las manos en las urnas.",
-          "Recordar el andar del \"Ingeniero\" nos obliga a ver el triste estado en el que se encuentra la política mexicana. Cárdenas pertenecía a una generación donde la verdadera izquierda se construía con libros en la mano, discusiones serias, apertura a la crítica y propuestas de fondo. En sus últimas entrevistas, él mismo decía sin rodeos que no tenía la menor idea de qué significaba la llamada \"Cuarta Transformación\", porque lo que veía no tenía nada que ver con los ideales democráticos por los que él y miles de mexicanos lucharon desde la histórica Corriente Democrática. Mientras Cárdenas buscaba instituciones fuertes y libertad para pensar distinto, el proyecto de López Obrador y Claudia Sheinbaum prefirió concentrar todo el poder en una sola persona, atacar a quienes dudaban y exigir una lealtad ciega.",
-          "Lo que hoy estamos viendo es el desmantelamiento de lo que costó décadas edificar. El INE independiente nació gracias a la presión cívica que encabezó Cárdenas después del fraude de 1988, buscando que ningún Presidente volviera a decidir quién gana o pierde. Hoy, sin embargo, desde el gobierno se ha querido convencer a la gente de que esos contrapesos no sirven y que solo son un gasto inútil. Y el resultado está a la vista: un árbitro electoral cuestionado en todos sus aspectos.",
-          "A esta pérdida de contrapesos se suma un problema igual de grave: el vacío de ideas. Hay una distancia enorme entre aquella izquierda de pensadores e intelectuales que representaba Cárdenas y los grupos que hoy dicen gobernar a nombre del pueblo. Da la impresión de que hoy en día, para ser \"de izquierda\" en México, basta con repetir consignas, ignorar los datos duros y aplaudir todo lo que ordene el líder en turno. Se presume la ignorancia como si fuera un mérito y se confunde el progresismo con la obediencia política.",
-          "Incluso en temas clave como el petróleo y la energía, Cárdenas siempre entendió que defender la soberanía del país no significaba aferrarse al pasado, sino modernizar a Pemex, combatir la corrupción y apostar por energías más limpias. La visión actual, en cambio, ha preferido gastar fortunas en rescatar esquemas viejos, llenar al país de militares y polarizar a la sociedad.",
-          "Por todo lo anterior, la partida de Cárdenas nos deja una sensación de orfandad, pero sobre todo nos deja preguntas incómodas. ¿Cuántos de los políticos que hoy nos gobiernan o nos quieren gobernar tienen la capacidad de debatir ideas sin ponerse a gritar? ¿Quiénes actúan por convicciones reales y no solo por la ambición de conservar el hueso?",
-          "México no necesita caudillos que se crean infalibles ni fanáticos que aplaudan sin pensar. Honrar la memoria de Cuauhtémoc Cárdenas requiere recuperar el sentido crítico, no dejarnos engañar con promesas vacías y exigir una política seria, democrática y verdaderamente al servicio del pueblo.",
-          "https://www.facebook.com/ricardotorressaltillo?fref=ts\ngpcjudicial@hotmail.com\n@Ricardo Torres_1"
-        ],
-        "meta": "Redacción · 31 de octubre"
-      },
-      {
-        "img": "contenido/imagenes/local--47632--mvu1bitge8.jpg",
-        "cat": "local",
-        "etq": "Nueva",
-        "tit": "Mañana en Saltillo Manifestaciones",
-        "res": "Mañana manifestaciones en el IMSS",
-        "cuerpo": [
-          "Convocan a manifestación en Saltillo para exigir mejoras en el IMSS y la destitución de \"Olivos\"\n​Trabajadores y ciudadanos han convocado a una manifestación en Saltillo, programada para el 30 de octubre de 2026 a las 10:00 A.M.. El punto de concentración será sobre el Periférico Luis Echeverría, específicamente a la altura de City Club Saltillo y Soriana.  \n​Bajo el lema \"¡Unidos somos más fuertes!\", la movilización tiene como objetivo principal luchar por un Instituto Mexicano del Seguro Social (IMSS) más fuerte para todos y poner fin a las injusticias. Las demandas centrales publicadas en la convocatoria (\"47632.jpg\") incluyen:  \n​Un aumento salarial justo y digno.  \n​Garantizar el abasto de insumos y medicamentos.  \n​La realización de un congreso extraordinario.  \n​La destitución inmediata de \"Olivos\".  \n​El mensaje difundido hace un llamado abierto para que más personas se sumen a la movilización, señalando que la participación es fundamental para la defensa de los derechos."
-        ],
-        "meta": "Redacción · 29 de octubre"
-      }
-    ],
+    "local": [],
     "internacional": [],
     "deportes": [],
-    "politika": [
-      {
-        "img": "contenido/imagenes/politika--el-nudo-juridico-y-la-indefension--murtt48qqy.jpg",
-        "cat": "opinion",
-        "etq": "Nueva",
-        "tit": "El Nudo Jurídico  y la indefensión",
-        "res": "COLUMNA SEMANAL \nPULSO NOTICIOSO\nEL NUDO JURIDICO Y LA INDEFENSION \nPOR: RICARDO TORRES",
-        "cuerpo": [
-          "COLUMNA SEMANAL \nPULSO NOTICIOSO\nEL NUDO JURIDICO Y LA INDEFENSION \nPOR: RICARDO TORRES",
-          "Un préstamo urgente de 5,000 pesos para resolver una emergencia médica o familiar puede convertirse, en cuestión de meses, en la pérdida de la casa o el vehículo de una familia.",
-          "En Saltillo y en todo Coahuila estamos viendo un fenómeno que ya no es aislado, sino una verdadera red de usura que opera bajo el amparo de los juzgados ejecutivos mercantiles.",
-          "El problema de fondo es muy claro: por necesidad o ignorancia, la gente firma pagarés en blanco. Y el usurero, sabiendo cómo funciona el sistema judicial, llena ese papel por 30,000, 50,000 o hasta 100,000 pesos.",
-          "El pagaré es un documento de ejecución aparejada. ¿Qué significa esto en términos sencillos? Que desde el momento en que te notifican la demanda, pueden señalarte bienes para embargo. El juicio arranca cobrando, no averiguando.",
-          "Cuando la persona acude al juzgado y dice: \"Yo solo pedí cinco mil pesos y firmé en blanco\", la ley le exige demostrarlo. Y para demostrar la alteración del documento se requiere una prueba pericial en grafoscopía y documentoscopía.",
-          "Aquí es donde se cierra la trampa:",
-          "Un dictamen pericial privado cuesta entre 7,000 y 14,000 pesos.",
-          "La persona que pidió 5,000 pesos porque no tenía dinero, obviamente no tiene para pagar un perito ni un abogado particular.",
-          "Aunque la Defensoría Pública proporcione un abogado de oficio, los honorarios y gastos del perito corren por cuenta del demandado.",
-          "El resultado es la indefensión total. La gente abandona el juicio por falta de recursos y el usurero obtiene una sentencia a favor para rematar sus bienes.",
-          "Recientemente, la presidencia del Tribunal Superior de Justicia lanzó campañas advirtiendo a la ciudadanía que no firme documentos en blanco. La intención es buena, pero la recomendación se queda corta frente a la necesidad extrema de la gente. La pregunta obligada es: ¿Qué va a hacer el Estado más allá de advertir?"
-        ],
-        "meta": "Redacción · 2 de octubre"
-      },
-      {
-        "img": "contenido/imagenes/politika--36226--mu1ulhps2t.webp",
-        "cat": "opinion",
-        "etq": "Nueva",
-        "tit": "Sin Competitividad No Hay Mañana",
-        "res": "Columna esquina del águila\nAutor Ricardo Torres",
-        "cuerpo": [
-          "ESQUINA DEL ÁGUILA\nTITULO: SIN COMPETITIVIDAD NO HAY MAÑANA\nRicardo Torres",
-          "10 de septiembre de 2026",
-          "El desplome educativo revelado por los resultados de la prueba PISA no es un accidente ni un tropezón pasajero, sino una catástrofe provocada directamente por la autodenominada Cuarta Transformación. Intentar culpar a administraciones pasadas por los pésimos resultados de hoy es un absurdo y una muestra de ceguera absoluta, pues la 4T lleva años al frente del país y del destino de nuestras aulas. A esto se suma el cinismo con el que la presidenta insiste en defender la Nueva Escuela Mexicana, un modelo fallido que prefirió cambiar el rigor pedagógico por la ideología política y las consignas comunitarias, vulnerando de manera flagrante el derecho constitucional a una educación de excelencia, integral y digna para nuestros hijos y jóvenes.\nLa prueba PISA, diseñada por la Organización para la Cooperación y el Desarrollo Económicos (OCDE), organismo internacional integrado por decenas de países para promover el bienestar económico y social, evalúa cada tres años las competencias de estudiantes de 15 años en matemáticas, lectura y ciencias para medir si las escuelas los preparan para los retos cotidianos y laborales en un entorno globalizado. La gravedad de la postura oficial quedó al descubierto de manera lastimosa en aquella mañanera donde una funcionaria, bailando ante las cámaras, dejó en claro la intención del régimen: eliminar el ánimo de competencia y rechazar el espíritu de superación.\nHoy pagamos las consecuencias de esa agenda mediocre. Al castigar la excelencia y calificar el esfuerzo individual como un defecto, el gobierno ha condenado a nuestras nuevas generaciones a convertirse en una juventud sosa, sin aspiraciones y desarmada para competir. Detrás de este modelo no hay un descuido, sino la intención de un régimen que cultiva la ignorancia para anular el juicio propio, sometiendo a los jóvenes a una docilidad conveniente y fácil de manipular.\nEsta crisis en las aulas cobra mayor gravedad al juntarse con la mala situación financiera del país: mientras la deuda pública no para de crecer y absorberá recursos astronómicos para pagar intereses, el país compromete el dinero futuro al tiempo que destruye su capital humano. Lo más preocupante es que, por mero fanatismo, existen sectores que pretenden seguir apoyando al régimen oficialista y votando por el mismo proyecto causante de estos deshonrosos resultados, ignorando que entregando el progreso de sus propios hijos se vuelven cómplices del desastre. Es decir, que en lugar de encubrir políticamente este fracaso, corresponde imputar responsabilidades legales a los funcionarios de la Secretaría de Educación Pública (SEP) bajo la Ley General de Responsabilidades Administrativas por haber fallado de forma tan grave en el ejercicio de su función.\nEl costo de esta negligencia se pagará durante décadas con más pobreza, desempleo y marginación social. Las autoridades cometieron un atropello consciente contra el futuro de los jóvenes. Si la sociedad no despierta frente al cinismo oficial, exige cuentas a las autoridades educativas y defiende el rigor formativo, el precio por este saqueo de talento será incalculable.\nhttps://www.facebook.com/ricardotorressaltillo?fref=ts\ngpcjudicial@hotmail.com\n@Ricardo Torres_1"
-        ],
-        "meta": "Redacción · 14 de septiembre"
-      }
-    ],
+    "politika": [],
     "dimes": [],
     "columnas": []
   }
