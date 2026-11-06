@@ -6,7 +6,8 @@
   },
   "vivo": {
     "activo": true,
-    "fuentePrincipal": "https://vanguardia.com.mx/rss.xml",
+    "fuentePrincipal": "https://eldiariodecoahuila.com.mx/feed/",
+    "respaldoGoogle": false,
     "consultaLocal": "Saltillo Coahuila",
     "tickerEnVivo": true
   },

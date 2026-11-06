@@ -1130,16 +1130,11 @@ window.addEventListener('scroll', ()=>{
    ========================================================================== */
 // URL del Worker propio que trae las noticias sorteando el bloqueo CORS de la fuente.
 const API_NOTICIAS = 'https://pulso-api.riosdigitali.workers.dev/api/noticias';
-const GN = 'hl=es-419&gl=MX&ceid=MX:es-419';
-function feedsRespaldo(){
-  const q = encodeURIComponent((CONFIG.vivo&&CONFIG.vivo.consultaLocal)||'México');
-  return {
-    inicio:        `https://news.google.com/rss?${GN}`,
-    nacional:      `https://news.google.com/rss?${GN}`,
-    local:         `https://news.google.com/rss/search?q=${q}&${GN}`,
-    internacional: `https://news.google.com/rss/headlines/section/topic/WORLD?${GN}`,
-    deportes:      `https://news.google.com/rss/headlines/section/topic/SPORTS?${GN}`
-  };
+function esEnlaceDiario(enlace){
+  try{
+    const url = new URL(enlace);
+    return url.protocol === 'https:' && /^(www\.)?eldiariodecoahuila\.com\.mx$/.test(url.hostname);
+  }catch(e){ return false; }
 }
 const CATMAP = [
   ['local', /local|policiaca|ramos arizpe|gu[ií]a urbana|estatal|carbon[ií]fera|laguna|sureste|coahuila|saltillo|torre[oó]n|monclova|piedras negras|acu[nñ]a|regi[oó]n/i],
@@ -1149,9 +1144,10 @@ const CATMAP = [
 ];
 const CATARTE = {local:'local', deportes:'deportes', internacional:'internacional', nacional:'nacional', inicio:'nacional'};
 function clasificar(it){
-  const cats = (it.categories||[]).join(' ');
+  // El índice de El Diario no incluye categorías; en ese caso usamos el título.
+  const cats = (it.categories||[]).join(' ') || tituloFuente(it.title||'')[0];
   for(const [sec, rx] of CATMAP){ if(rx.test(cats)) return sec; }
-  return null;
+  return 'nacional';
 }
 function imgDe(it){
   let u = (it.enclosure && (it.enclosure.link||it.enclosure.url)) || it.thumbnail || '';
@@ -1180,12 +1176,11 @@ function tituloFuente(t){
 function resumenDe(it){
   return (it.description||'').replace(/<[^>]+>/g,' ').replace(/\s+/g,' ').trim().slice(0,160);
 }
-async function fetchFeed(url){
+async function fetchFeed(){
   // El Diario de Coahuila bloquea su RSS a servicios externos (firewall anti-bots),
   // pero su API de WordPress sí permite acceso directo desde el navegador,
   // con foto destacada y categorías incluidas.
-  const mWP = url.match(/^https?:\/\/(?:www\.)?(eldiariodecoahuila\.com\.mx)/i);
-  if(mWP){
+  try{
     // IMPORTANTE: nada de `_embed`. Con _embed la respuesta pesa varios MB y el
     // servidor tarda tanto que el navegador se rinde y la portada queda vacía.
     // Todo lo que necesitamos ya viene en la respuesta ligera:
@@ -1202,10 +1197,13 @@ async function fetchFeed(url){
     let posts;
     try{
       const res = await fetch(API_NOTICIAS, {signal: ctrl.signal});
+      if(!res.ok) throw new Error('Fuente no disponible: HTTP '+res.status);
       posts = await res.json();
     } finally { clearTimeout(alarma); }
     if(posts && posts.ok === false) throw new Error(posts.error||'fuente no disponible');
-    if(!Array.isArray(posts) || !posts.length) throw new Error('sin datos');
+    if(!Array.isArray(posts)) throw new Error('sin datos');
+    posts = posts.filter(p=>esEnlaceDiario(p.link));
+    if(!posts.length) throw new Error('sin notas de El Diario de Coahuila');
     const dec = s => { const t=document.createElement('textarea'); t.innerHTML=s||''; return t.value; };
     const bonito = s => s.charAt(0).toUpperCase()+s.slice(1);
     return {
@@ -1221,11 +1219,24 @@ async function fetchFeed(url){
         enclosure: {}
       }))
     };
+  }catch(e){
+    console.warn('Consulta directa de El Diario no disponible; se consultan solo sus notas indexadas.', e);
   }
-  const res = await fetch('https://api.rss2json.com/v1/api.json?rss_url='+encodeURIComponent(url));
-  const data = await res.json();
+  // El índice es un intermediario: se exige tanto el dominio en la consulta
+  // como el nombre exacto del editor. Nunca se usan los titulares generales.
+  const url = 'https://news.google.com/rss/search?q='+encodeURIComponent('site:eldiariodecoahuila.com.mx')+'&hl=es-419&gl=MX&ceid=MX:es-419';
+  const ctrl = new AbortController();
+  const alarma = setTimeout(()=>ctrl.abort(), 15000);
+  let data;
+  try{
+    const res = await fetch('https://api.rss2json.com/v1/api.json?rss_url='+encodeURIComponent(url), {signal:ctrl.signal});
+    if(!res.ok) throw new Error('Índice de El Diario no disponible');
+    data = await res.json();
+  }finally{ clearTimeout(alarma); }
   if(data.status!=='ok' || !data.items) throw new Error('sin datos');
-  return data;
+  const items = data.items.filter(it=>tituloFuente(it.title||'')[1].trim().toLowerCase()==='el diario de coahuila');
+  if(!items.length) throw new Error('sin notas verificadas de El Diario de Coahuila');
+  return {feed:{title:'El Diario de Coahuila'}, items};
 }
 function cardVivo(it, sec, nombreFuente){
   const [tit, fTit] = tituloFuente(it.title||'');
@@ -1273,7 +1284,7 @@ async function cargarVivo(){
   const usados = new Set();
 
   try{
-    const data = await fetchFeed(CONFIG.vivo.fuentePrincipal);
+    const data = await fetchFeed();
     nombreFuente = (data.feed && data.feed.title) || '';
     for(const it of data.items){
       const sec = clasificar(it);
@@ -1281,25 +1292,7 @@ async function cargarVivo(){
       if(buckets.inicio.length < cupos.inicio + 3 && !usados.has(it.link)){ buckets.inicio.push(it); usados.add(it.link); }
     }
   }catch(e){
-    console.warn('Fuente RSS principal no disponible; se usan los feeds de respaldo.', e);
-  }
-
-  // Feeds de respaldo (Google News): SOLO si está activado en ajustes
-  // (respaldoGoogle: true). Apagado por defecto para que no aparezcan
-  // notas de otros periódicos como referencia.
-  if(CONFIG.vivo && CONFIG.vivo.respaldoGoogle){
-    const resp = feedsRespaldo();
-    for(const sec of Object.keys(buckets)){
-      if(buckets[sec].length < 3){
-        try{
-          const data = await fetchFeed(resp[sec]);
-          for(const it of data.items){
-            if(buckets[sec].length >= cupos[sec]) break;
-            buckets[sec].push(it);
-          }
-        }catch(e){}
-      }
-    }
+    console.warn('El Diario de Coahuila no disponible; se mantienen las notas propias.', e);
   }
   limpiarEsqueletos();
 

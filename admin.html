@@ -304,6 +304,13 @@ const AJUSTES_RESPALDO = {
 
 let CONTENIDO = clon(RESPALDO);
 let AJUSTES = clon(AJUSTES_RESPALDO);
+function ajustesSoloDiario(ajustes){
+  const resultado = Object.assign(clon(AJUSTES_RESPALDO), ajustes || {});
+  resultado.vivo = Object.assign({}, AJUSTES_RESPALDO.vivo, resultado.vivo, {
+    fuentePrincipal: 'https://eldiariodecoahuila.com.mx/feed/', respaldoGoogle: false
+  });
+  return resultado;
+}
 
 const COLECCIONES = [
   {id:'destacada',     nombre:'⭐ Nota destacada',                          tipo:'unica'},
@@ -501,7 +508,7 @@ async function cargarEstado(){
 
   if(borrador){
     CONTENIDO = normalizar(borrador.contenido);
-    AJUSTES = Object.assign(clon(AJUSTES_RESPALDO), borrador.ajustes);
+    AJUSTES = ajustesSoloDiario(borrador.ajustes);
     marcarSucio(true);
     toast('Recuperado un borrador sin publicar de este navegador.', 'ok');
     return;
@@ -522,7 +529,7 @@ async function cargarEstado(){
   }else{
     CONTENIDO = clon(RESPALDO);
   }
-  AJUSTES = Object.assign(clon(AJUSTES_RESPALDO), pubAjustes || {});
+  AJUSTES = ajustesSoloDiario(pubAjustes);
   marcarSucio(false);
 }
 
@@ -796,8 +803,9 @@ function vistaAjustes(){
       <option value="0" ${!v.activo?'selected':''}>Desactivadas — solo mi contenido</option>
     </select>
 
-    <label class="etiqueta">📰 Fuente RSS principal</label>
-    <input class="campo" id="ajFuente" value="${esc(v.fuentePrincipal)}" placeholder="https://eldiariodecoahuila.com.mx/feed/">
+    <label class="etiqueta">📰 Fuente de noticias: El Diario de Coahuila</label>
+    <input class="campo" id="ajFuente" value="https://eldiariodecoahuila.com.mx/feed/" readonly>
+    <p class="ayuda">Las noticias automáticas se toman exclusivamente de El Diario de Coahuila.</p>
 
     <label class="etiqueta">📍 Región para las noticias locales</label>
     <input class="campo" id="ajLocal" value="${esc(v.consultaLocal)}" placeholder="Ej. Saltillo Coahuila">
@@ -1054,7 +1062,8 @@ window.guardarTicker = () => {
 };
 window.guardarAjustes = () => {
   AJUSTES.vivo.activo         = $('ajVivo').value === '1';
-  AJUSTES.vivo.fuentePrincipal= $('ajFuente').value.trim() || 'https://eldiariodecoahuila.com.mx/feed/';
+  AJUSTES.vivo.fuentePrincipal= 'https://eldiariodecoahuila.com.mx/feed/';
+  AJUSTES.vivo.respaldoGoogle = false;
   AJUSTES.vivo.consultaLocal  = $('ajLocal').value.trim() || 'México';
   AJUSTES.vivo.tickerEnVivo   = $('ajTickerVivo').value === '1';
   AJUSTES.radioStreamURL      = $('ajRadio').value.trim();
