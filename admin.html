@@ -219,6 +219,7 @@ main{padding:24px 0 80px}
 
 <div class="toast" id="toast"></div>
 
+<script src="notas.js"></script>
 <script>
 /* =============================================================================
    PULSO NOTICIOSO — Panel de administración
@@ -996,7 +997,10 @@ window.nuevaNota = () => {
   $('formNota').scrollIntoView({behavior:'smooth', block:'nearest'});
 };
 window.guardarNota = (coleccion, idx) => {
+  const anterior = coleccion === 'destacada' ? CONTENIDO.destacada
+    : (idx >= 0 ? refColeccion(coleccion)[idx] : null);
   const n = {
+    id: anterior ? PulsoNotas.clave(anterior) : crypto.randomUUID(),
     img: $('fImg').value.trim(),
     cat: $('fCat').value,
     etq: $('fEtq').value.trim() || 'Nota',
