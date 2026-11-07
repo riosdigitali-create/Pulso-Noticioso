@@ -8,16 +8,24 @@
   ],
   "destacada": {
     "auto": false,
-    "img": "contenido/imagenes/destacada--latiendo-por-la-verdad--mrsgte0jn0.jpg",
+    "img": "contenido/imagenes/destacada--la-laguana-de-coahuila-y-sus-tolvaneras-o-lluvia-de-arena--mw5qhnicqa.jpg",
     "cat": "nacional",
     "etq": "Pulso Noticioso",
     "tit": "La Laguana de Coahuila y sus Tolvaneras o lluvia de Arena.",
     "res": "Noticias de México y el mundo, deportes, análisis, radio en vivo y video.",
     "cuerpo": [
-      "Pulso Noticioso es un espacio informativo con cobertura nacional, local e internacional, radio virtual en vivo y canal de video.",
-      "La participación ciudadana es el corazón del proyecto: envíanos tus reportes por WhatsApp con el botón verde."
+      "COAHUILA: SEGURIDAD, EDUCACIÓN Y ECONOMÍA MARCAN LA AGENDA ESTATAL",
+      "Coahuila, 6 de noviembre de 2026.",
+      "Diversos acontecimientos mantienen la atención en Coahuila. En materia de seguridad, el estado lamenta el fallecimiento de un policía municipal de Monclova durante una persecución, mientras que en Piedras Negras continúan los trabajos de búsqueda y recuperación de restos óseos.",
+      "En el ámbito educativo, Saltillo activó protocolos preventivos ante una amenaza en la Secundaria 16, mientras que en Múzquiz se puso en marcha el programa Mochila Sana y Segura.",
+      "En materia económica, destacan los adeudos vehiculares que persisten en la entidad y el impulso a nuevas carreras universitarias relacionadas con los semiconductores y la electromovilidad, sectores estratégicos para el futuro industrial de Coahuila.",
+      "Por su parte, Torreón enfrenta retos en el suministro de agua potable y drenaje, mientras se prepara para importantes celebraciones tradicionales.",
+      "Finalmente, las autoridades mantienen recomendaciones preventivas ante la llegada de un nuevo frente frío que podría generar lluvias, fuertes rachas de viento y un descenso de temperaturas en distintas regiones del estado.",
+      "Así transcurre la actualidad de Coahuila, entre retos de seguridad, desarrollo económico y desafíos sociales.",
+      "Pulso Noticioso, latiendo por la verdad."
     ],
-    "meta": "Hoy Va Inglaterra por el Tercer Lugar de Copa del Mundo"
+    "meta": "Hoy Va Inglaterra por el Tercer Lugar de Copa del Mundo",
+    "id": "titulo-La Laguana de Coahuila y sus Tolvaneras o lluvia de Arena."
   },
   "laterales": [],
   "inicio": [],
