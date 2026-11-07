@@ -50,7 +50,20 @@
         "meta": "Redacción · 18 de julio"
       }
     ],
-    "local": [],
+    "local": [
+      {
+        "id": "e7728765-b778-4b3b-a5d2-5f830b601855",
+        "img": "contenido/imagenes/local--11102--mw706okbfo.webp",
+        "cat": "local",
+        "etq": "Nueva",
+        "tit": "En paz Descanse Lupe Luevanos",
+        "res": "Lupe Luevanos personaje  de la región",
+        "cuerpo": [
+          "Pulso Noticioso se une a la Pena que Embarga a Familiares y Amigos por el Sensible Fallecimiento de Guadalupe (Lupe) Luevano.\nDesde este medio nuestra  solidaridad"
+        ],
+        "meta": "Redacción · 7 de noviembre"
+      }
+    ],
     "internacional": [],
     "deportes": [],
     "politika": [],
