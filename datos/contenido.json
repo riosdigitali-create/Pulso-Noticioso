@@ -37,7 +37,28 @@
     "id": "titulo-La Laguana de Coahuila y sus Tolvaneras o lluvia de Arena."
   },
   "laterales": [],
-  "inicio": [],
+  "inicio": [
+    {
+      "id": "95864ba8-1de3-4738-b4f2-0a7de29e0b37",
+      "img": "contenido/imagenes/inicio--14943--mwlpzh47im.jpg",
+      "cat": "pulso",
+      "etq": "Nueva",
+      "tit": "Coahuila Pa Delante en las Encuestas",
+      "res": "Resultados  estabilidad seguridad y Economía en Coahuila",
+      "cuerpo": [
+        "Coahuila es el estado más seguro de todo México: por primera vez en su historia ocupa el primer lugar nacional\nEn palabras Del Gobernador del Estado Manolo Jiménez , Destacó como  son los resultados  medibles",
+        "Saltillo, Coahuila. Vivir en Coahuila es de los mejores lugares de México para estar y desarrollarse con nuestras familias, y eso lo hemos construido entre todas y todos.",
+        "En la parte económica, el estado mantiene un gran desarrollo y una gran productividad. Las empresas que llegan a instalarse, ya sean mexicanas o extranjeras, les va bien, principalmente porque en Coahuila se encuentran las y los mejores trabajadores y las y los mejores profesionistas.",
+        "Esa es una de las características por las cuales las empresas se instalan en nuestro estado: por sus personas.",
+        "Por eso hay más inversiones. En tres años ha habido más de 190 mil millones de pesos de inversiones, a pesar de que ha sido un año complicado por el tema del reacomodo comercial y los aranceles.",
+        "Ya va despegando nuevamente la producción de muchas empresas que estaban en la incertidumbre.",
+        "También se ha trabajado en temas como la seguridad. En la última encuesta del ENVIPE, que es la encuesta que mide la seguridad de los estados del país, cuando se llegó al gobierno en 2024, Coahuila era el tercer estado más seguro del país.",
+        "En 2025, con esta encuesta del ENVIPE del INEGI, Coahuila subió al segundo lugar nacional.",
+        "Y este año 2026, hace un mes y medio, en esta misma encuesta, por primera vez en la historia, Coahuila es el estado más seguro de todo México."
+      ],
+      "meta": "Redacción · 18 de noviembre"
+    }
+  ],
   "secciones": {
     "nacional": [
       {
