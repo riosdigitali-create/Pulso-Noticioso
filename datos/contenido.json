@@ -1,138 +1,227 @@
 {
   "v": 7,
   "ticker": [
-    "🔴 Pulso Noticioso — Latiendo por la Verdad",
-    "📻 Escucha nuestra radio virtual en vivo las 24 horas",
-    "📺 Suscríbete a nuestro canal de YouTube",
-    "📱 Envía tu reporte ciudadano por WhatsApp desde el botón del portal"
+    "🔴 Pulso Noticioso — Latiendo por la Verdad"
   ],
   "destacada": {
     "auto": false,
-    "img": "contenido/imagenes/destacada--coahuila-seguridad-educacion-y-economia--mwb46p8f25.png",
-    "cat": "nacional",
-    "etq": "Pulso Noticioso",
-    "tit": "SISTEMA JUDICIAL DE COAHUILA PRECEDENTE PELIGROSO",
-    "res": "Noticias de México y el mundo, deportes, análisis, radio en vivo y video.",
-    "cuerpo": [
-      "La Esquina del Águila \nPor Lic. Ricardo Torres",
-      "OPINIÓN • OPINIÓN POLÍTICA Y JURÍDICA",
-      "El sistema de justicia de Coahuila está sentando un precedente por demás peligroso",
-      "La ley se está doblegando ante la presión mediática y el morbo social. La prisión preventiva se está convirtiendo en espectáculo y en venganza pública.",
-      "Por Ricardo Torres • Entrega semanal para Pulso Noticioso",
-      "¿Qué tal, amigos de Pulso Noticioso? Su servidor Ricardo Torres, en esta entrega semanal de este espacio de opinión política y opinión jurídica para este medio. Entremos en materia.",
-      "El sistema de justicia de Coahuila está sentando un precedente por demás peligroso. La ley se está doblegando ante la presión mediática y el morbo social, y le voy a decir por qué lo digo.",
-      "Quizás usted lo sepa, pero desde el pasado mes de julio una mujer lleva cuatro meses en prisión preventiva por un caso de maltrato animal. Cuatro meses privada de su libertad por un delito donde la ley exige, si bien es cierto, la prisión como una excepción, como una excepción, nunca como la regla. Y que entonces la justicia penal se está convirtiendo en un espectáculo o en venganza pública.",
-      "Mantener encarcelada a una mujer o a una persona un tercio de año en este contexto rompe, desde luego, con la presunción de inocencia y el principio de proporcionalidad, porque la prisión preventiva existe para casos de alto riesgo, no para usarse como una pena anticipada para calmar a las redes sociales.",
-      "Pero lo más grave ocurrió en la reciente audiencia de revisión el día de ayer. La defensa solicita una audiencia para la revisión de la medida cautelar, fundado en que la mujer, la madre de familia, debe estar, es necesaria para el desarrollo integral de sus hijos. La defensa demuestra con claridad la urgencia de que la madre regrese a su hogar para atender a sus hijos menores de edad, quienes están viviendo sin duda una pesadilla emocional tras meses de esta separación obligada.",
-      "¿Y qué hizo la juzgadora? Desestimó el bienestar de los niños. Tuvo en la mano la opción legal de dictar una prisión domiciliaria, una medida que también está contemplada en el Código Nacional de Procedimientos Penales, pero prefirió ceder ante este clamor externo.",
-      "Y es cierto, porque a las afueras colectivos animalistas festejaron la ratificación de la prisión preventiva, de la prisión continuada, como si fuera un triunfo propio. Resulta en verdad indignante que se priorice la satisfacción de un grupo que celebra una fractura familiar por encima del interés superior de la niñez, un principio constitucional que sí obliga al Estado a proteger a los menores por encima de cualquier presión, por encima de cualquier circunstancia.",
-      "Por si fuera poco, el sistema ignoró por completo la perspectiva de género y la salud mental de la imputada, quien se ha dicho que padece de severos cuadros de ansiedad y una vulnerabilidad clínica. Y en su lugar, es decir, en lugar de garantizar la atención médica especializada, el Estado optó por la criminalización y este castigo por demás desproporcionado.",
-      "Las redes sociales hoy celebran el encarcelamiento de una madre. Mañana, esa misma turba mediática puede ir por cualquiera de nosotros.",
-      "Ninguna sociedad, y eso quiero que esté muy claro, ninguna sociedad puede sentirse segura cuando la justicia cambia la Constitución por el aplauso de la masa.",
-      "El Poder Judicial, estos jueces penales de nuestro estado que se sienten intocables y que se consideran tener la verdad absoluta y dominar por encima de todos el procedimiento penal, deben entender, y deben hacerlo de manera inmediata, que la ley se aplica con la Constitución en la mano, y nunca para darle gusto al linchamiento social.",
-      "Muchas gracias.",
-      "— Pulso Noticioso • Latiendo por la Verdad —"
-    ],
-    "meta": "Hoy Va Inglaterra por el Tercer Lugar de Copa del Mundo",
-    "id": "titulo-La Laguana de Coahuila y sus Tolvaneras o lluvia de Arena."
+    "img": "contenido/imagenes/destacada--trudy-pone-en-alerta-a-mexico--mvoidyyc6m.jpg",
+    "cat": "pulso",
+    "etq": "Al momento",
+    "tit": "Trudy pone en alerta a mexico",
+    "res": "",
+    "cuerpo": [],
+    "meta": "Redacción"
   },
   "laterales": [],
   "inicio": [
     {
-      "id": "95864ba8-1de3-4738-b4f2-0a7de29e0b37",
       "img": "contenido/imagenes/inicio--14943--mwlpzh47im.jpg",
       "cat": "pulso",
-      "etq": "Nueva",
-      "tit": "Coahuila Pa Delante en las Encuestas",
-      "res": "Resultados  estabilidad seguridad y Economía en Coahuila",
-      "cuerpo": [
-        "Coahuila es el estado más seguro de todo México: por primera vez en su historia ocupa el primer lugar nacional\nEn palabras Del Gobernador del Estado Manolo Jiménez , Destacó como  son los resultados  medibles",
-        "Saltillo, Coahuila. Vivir en Coahuila es de los mejores lugares de México para estar y desarrollarse con nuestras familias, y eso lo hemos construido entre todas y todos.",
-        "En la parte económica, el estado mantiene un gran desarrollo y una gran productividad. Las empresas que llegan a instalarse, ya sean mexicanas o extranjeras, les va bien, principalmente porque en Coahuila se encuentran las y los mejores trabajadores y las y los mejores profesionistas.",
-        "Esa es una de las características por las cuales las empresas se instalan en nuestro estado: por sus personas.",
-        "Por eso hay más inversiones. En tres años ha habido más de 190 mil millones de pesos de inversiones, a pesar de que ha sido un año complicado por el tema del reacomodo comercial y los aranceles.",
-        "Ya va despegando nuevamente la producción de muchas empresas que estaban en la incertidumbre.",
-        "También se ha trabajado en temas como la seguridad. En la última encuesta del ENVIPE, que es la encuesta que mide la seguridad de los estados del país, cuando se llegó al gobierno en 2024, Coahuila era el tercer estado más seguro del país.",
-        "En 2025, con esta encuesta del ENVIPE del INEGI, Coahuila subió al segundo lugar nacional.",
-        "Y este año 2026, hace un mes y medio, en esta misma encuesta, por primera vez en la historia, Coahuila es el estado más seguro de todo México."
-      ],
-      "meta": "Redacción · 18 de noviembre"
+      "etq": "Al momento",
+      "tit": "14943",
+      "res": "",
+      "cuerpo": [],
+      "meta": "Redacción"
+    },
+    {
+      "img": "contenido/imagenes/inicio--26676--mrqyfcywkx.jpg",
+      "cat": "pulso",
+      "etq": "Al momento",
+      "tit": "26676",
+      "res": "",
+      "cuerpo": [],
+      "meta": "Redacción"
+    },
+    {
+      "img": "contenido/imagenes/inicio--26687--mrr03p2qxx.jpg",
+      "cat": "pulso",
+      "etq": "Al momento",
+      "tit": "26687",
+      "res": "",
+      "cuerpo": [],
+      "meta": "Redacción"
+    },
+    {
+      "img": "contenido/imagenes/inicio--41098--muuhy7x98v.jpg",
+      "cat": "pulso",
+      "etq": "Al momento",
+      "tit": "41098",
+      "res": "",
+      "cuerpo": [],
+      "meta": "Redacción"
+    },
+    {
+      "img": "contenido/imagenes/inicio--44354--mvc1gqr53k.png",
+      "cat": "pulso",
+      "etq": "Al momento",
+      "tit": "44354",
+      "res": "",
+      "cuerpo": [],
+      "meta": "Redacción"
+    },
+    {
+      "img": "contenido/imagenes/inicio--m--muuhu1hwlp.jpg",
+      "cat": "pulso",
+      "etq": "Al momento",
+      "tit": "M",
+      "res": "",
+      "cuerpo": [],
+      "meta": "Redacción"
     }
   ],
   "secciones": {
     "nacional": [
       {
-        "id": "57b23664-ec91-4b89-a02b-f71e01bf4db9",
         "img": "contenido/imagenes/nacional--12596--mwcp6uxnpw.webp",
         "cat": "nacional",
-        "etq": "Nueva",
-        "tit": "Relación Coahuila Texas",
-        "res": "Manolo Jiménez  habla sobre la. Roxina relación bilateral con Texas",
-        "cuerpo": [
-          "En Entrevista para Pulso Noticioso \nEl Gobernador de Coahuila  comenta de la próxima relación bilateral con el Estado Americano",
-          "Por supuesto, entre Coahuila y Texas hay una gran historia, solíamos ser un solo estado, así nacimos hace doscientos años, el próximo año cumplimos doscientos años de la creación de la constitución del estado de Coahuila, Texas, que era un estado, era una constitución que estaba en inglés y en español, a raíz del triunfo de la gobernadora que felicitamos desde Coahuila, pues se pinta un panorama de una relación o de seguir consolidando la relación con Texas a raíz de su origen de familia mexicana, conoce pues todo el tema de nuestra cultura, nuestros valores, de la historia, y bueno, estoy seguro que vamos a ser un gran equipo por el bien de Texas y por el bien de Coahuila, seguiremos siendo grandes vecinos, seguiremos trabajando en los temas de seguridad, de migración, turismo, economía, y bueno, estamos seguros de que sí será."
-        ],
-        "meta": "Redacción · 11 de noviembre"
+        "etq": "Al momento",
+        "tit": "12596",
+        "res": "",
+        "cuerpo": [],
+        "meta": "Redacción"
       },
       {
         "img": "contenido/imagenes/nacional--249690--mvwsl2sjl6.jpg",
         "cat": "nacional",
-        "etq": "Nueva",
-        "tit": "La Muerte me esta Siguiendo desde el día en que Nací, pero va a contarle mucho Interrumpir mi vivir.",
+        "etq": "Al momento",
+        "tit": "249690",
         "res": "",
         "cuerpo": [],
-        "meta": "Redacción · 31 de octubre"
+        "meta": "Redacción"
       },
       {
-        "img": "",
+        "img": "contenido/imagenes/nacional--46824--mvotgf1dmv.webp",
         "cat": "nacional",
-        "etq": "Nueva",
-        "tit": "En la Semana  Huachicolera  o Robo de Combustible, los Quintos involucrados estan Cayendo.",
+        "etq": "Al momento",
+        "tit": "46824",
         "res": "",
         "cuerpo": [],
-        "meta": "Redacción · 18 de julio"
+        "meta": "Redacción"
       }
     ],
     "local": [
       {
-        "id": "e7728765-b778-4b3b-a5d2-5f830b601855",
-        "img": "contenido/imagenes/local--11102--mw706okbfo.webp",
+        "id": "0f95720f-effe-4762-a13e-bab06c226d34",
+        "img": "contenido/imagenes/local--15571--mwobltw2jl.webp",
         "cat": "local",
         "etq": "Nueva",
-        "tit": "En paz Descanse Lupe Luevanos",
-        "res": "Lupe Luevanos personaje  de la región",
+        "tit": "Blas flores  Entrega  Informe  de gobierno",
+        "res": "Entrega  del Tercer informe del gobernador",
         "cuerpo": [
-          "Pulso Noticioso se une a la Pena que Embarga a Familiares y Amigos por el Sensible Fallecimiento de Guadalupe (Lupe) Luevano.\nDesde este medio nuestra  solidaridad"
+          "BLAS FLORES ENTREGA TERCER INFORME DE GOBIERNO DEL GOBERNADOR MANOLO JIMÉNEZ SALINAS\nSaltillo, Coahuila. – Blas Flores compareció ante el Honorable Congreso del Estado para hacer entrega formal del documento que contiene el Tercer Informe de Gobierno, en cumplimiento de lo establecido en el artículo 49 de la Constitución Política del Estado de Coahuila de Zaragoza.",
+          "En el documento se da cuenta del estado que guarda la administración pública estatal, así como de las acciones, avances y resultados alcanzados durante el tercer año de gestión.\n“Hoy nos encontramos a mitad del camino de esta administración y le entramos con todo. Hemos avanzado, se han cumplido compromisos y se han alcanzado resultados importantes”, expresó Blas Flores durante la entrega.\nSeñaló que el informe refleja el compromiso de una administración que entiende que gobernar significa asumir responsabilidades, cumplir compromisos y responder con hechos a la confianza de la ciudadanía.",
+          "Por ello, aseguró que se seguirán manteniendo y redoblando los esfuerzos para continuar con los resultados en esta segunda mitad de la administración.",
+          "A nombre del gobernador Manolo Jiménez Salinas, agradeció a las diputadas y diputados de la Honorable Legislatura la recepción del Tercer Informe de Gobierno, así como el trabajo realizado en conjunto a lo largo de estos tres años.",
+          "Pulso Noticioso\nLatiendo por la Verdad\nwww.pulsonoticioso.org"
         ],
-        "meta": "Redacción · 7 de noviembre"
+        "meta": "Redacción · 19 de noviembre"
+      },
+      {
+        "img": "contenido/imagenes/local--11102--mw706okbfo.webp",
+        "cat": "local",
+        "etq": "Al momento",
+        "tit": "11102",
+        "res": "",
+        "cuerpo": [],
+        "meta": "Redacción"
+      },
+      {
+        "img": "contenido/imagenes/local--26679--mrqyl5fdxt.jpg",
+        "cat": "local",
+        "etq": "Al momento",
+        "tit": "26679",
+        "res": "",
+        "cuerpo": [],
+        "meta": "Redacción"
+      },
+      {
+        "img": "contenido/imagenes/local--26679--mrqylk1iie.jpg",
+        "cat": "local",
+        "etq": "Al momento",
+        "tit": "26679",
+        "res": "",
+        "cuerpo": [],
+        "meta": "Redacción"
+      },
+      {
+        "img": "contenido/imagenes/local--29008--ms51x8jy9w.jpg",
+        "cat": "local",
+        "etq": "Al momento",
+        "tit": "29008",
+        "res": "",
+        "cuerpo": [],
+        "meta": "Redacción"
+      },
+      {
+        "img": "contenido/imagenes/local--47632--mvu17i9wlh.jpg",
+        "cat": "local",
+        "etq": "Al momento",
+        "tit": "47632",
+        "res": "",
+        "cuerpo": [],
+        "meta": "Redacción"
+      },
+      {
+        "img": "contenido/imagenes/local--47632--mvu1842zg7.jpg",
+        "cat": "local",
+        "etq": "Al momento",
+        "tit": "47632",
+        "res": "",
+        "cuerpo": [],
+        "meta": "Redacción"
+      },
+      {
+        "img": "contenido/imagenes/local--47632--mvu1bitge8.jpg",
+        "cat": "local",
+        "etq": "Al momento",
+        "tit": "47632",
+        "res": "",
+        "cuerpo": [],
+        "meta": "Redacción"
+      },
+      {
+        "img": "contenido/imagenes/local--7342--mvw2ha9fs7.webp",
+        "cat": "local",
+        "etq": "Al momento",
+        "tit": "7342",
+        "res": "",
+        "cuerpo": [],
+        "meta": "Redacción"
       }
     ],
     "internacional": [],
     "deportes": [],
-    "politika": [],
+    "politika": [
+      {
+        "img": "contenido/imagenes/politika--36226--mu1ulhps2t.webp",
+        "cat": "opinion",
+        "etq": "Al momento",
+        "tit": "36226",
+        "res": "",
+        "cuerpo": [],
+        "meta": "Redacción"
+      },
+      {
+        "img": "contenido/imagenes/politika--el-nudo-juridico-y-la-indefension--murtt48qqy.jpg",
+        "cat": "opinion",
+        "etq": "Al momento",
+        "tit": "El nudo juridico y la indefension",
+        "res": "",
+        "cuerpo": [],
+        "meta": "Redacción"
+      }
+    ],
     "dimes": [],
     "columnas": [
       {
-        "id": "6bf1551f-5c0f-4697-8235-37696fd066ef",
         "img": "contenido/imagenes/columnas--12601--mwcpzikwzy.webp",
         "cat": "opinion",
-        "etq": "Nueva",
-        "tit": "Presupuesto y Digitalizacion",
-        "res": "Marcelo Lara, experto en finanzas y economía nos habla de lo. Que sucede actualmente",
-        "cuerpo": [
-          "Marcelo Lara\nAnalista en finanzas",
-          "​Bueno, efectivamente el pasado 20 de octubre se aprobó en el Senado esta nueva normatividad denominada Ley de Economía Digital. Solamente se esperaba ya su publicación en el Diario Oficial de la Federación, lo cual ya sucedió, para que surtiera los efectos que corresponden, ¿no?",
-          "​Hay que precisar un tema, ¿eh? Esta nueva normativa no pretende propiamente prohibir el uso de efectivo, eso sería algo hasta irónico, ¿no?, en nuestro consumo del día a día en nuestro país. El tema va más por el lado de promover la digitalización de las operaciones comerciales o facilitar los pagos electrónicos, evidentemente vía tarjeta de crédito, tarjeta de nómina, QR, aplicaciones, teléfonos móviles, ¿no?",
-          "​Realmente creo yo que esta nueva normativa ya se veía venir porque países muy desarrollados prácticamente han reducido hasta en un 70, 80 por ciento el uso de efectivo en las operaciones diarias. Sabemos a qué países nos referimos: Estados Unidos, Europa, Asia. Entonces América Latina estaba rezagado en este sentido, teníamos que subirnos a la digitalización del comercio y, bueno, a partir de esto viene esta ley que presenta la presidenta de la República, ¿no?",
-          "​Luego, aquí lo interesante es lo que va a venir. Se le encargó a la Secretaría de Hacienda que tomara o escogiera, no sé cómo decirlo, 15 rubros comerciales donde prácticamente ahí sería obligatorio aplicarla de un inicio. Sin que tampoco se va a decir que si uno no trae efectivo en esos rubros cuando vas a pagar, o en esos negocios, pues no te vayan a vender, ¿no?",
-          "​Entonces, hay que revisar ya los rubros que vienen, que seguramente los habrían dicho, habían dado algunos, que era: gasolineras, era casetas, era restaurantes, hoteles, todo lo que tuviera que ver con servicios turísticos; también el tema de los carros, lotes de carros, agencias de carros, algunos negocios como ferreterías, tlapalerías, sobre todo en la parte del centro del país que se manejaba muchísimo efectivo. En teoría les van a dar un plazo para que se sujeten a esta nueva ley y obviamente pues evangelicen con los clientes el uso de la herramienta digital, pero entendiendo que si no se trae una herramienta digital pues tendrían que cobrarte en efectivo también, es parte de, ¿no?",
-          "​Entonces esto es un progreso... vaya, esto va a ir encaminándose, va a ir aumentando de manera gradual. La idea, repito, es que en ciertos negocios, ciertos giros sea un tema de obligación, digamos un poco flexible, y para los otros negocios prácticamente es pues nada más ir llevando una cultura del pago ahora de manera digital, ¿no?",
-          "​Se le va a pedir a los negocios que estén dentro de estos giros, que va a señalar la Secretaría de Hacienda, que muestren visiblemente que ahí hay que pagar de manera digital o que también tienen el medio en efectivo, pero sí aclararlo muy bien a los clientes. Que obviamente tengan la infraestructura, la terminal, el internet también para que la gente se conecte al pagar, la terminal con el banco o con la institución financiera con las que se va el abono de las cuentas, y obviamente...",
-          "​Pues sí por el otro lado habrá negocios que en este transitar de esta nueva ley pues no van a poder cumplir porque la infraestructura no les da, y me refiero a negocios más del sur del país, pequeños negocios que no cuentan con una infraestructura para poder hacer cobros digitales, ¿no? Hay que decirlo de esta manera, ¿no?",
-          "​¿Qué abona? A ver, aspectos que abonan, que pienso yo, hay pros y contras. ¿Qué abona esto a la digitalización del comercio en nuestro país que teníamos que avanzar? Hay 98 millones de usuarios de teléfonos móviles y prácticamente el 98 por ciento son teléfonos inteligentes que se pueden usar para transferencias comerciales. Hay 200 millones de tarjetas de débito que seguramente se van a usar para esto, y 6 de cada 10 adultos que consumen servicios y productos en este país manejan un medio electrónico de pago ya. Realmente el rezago va a estar en el tema de los adultos mayores, eso hay que decirlo.",
-          "​¿Qué áreas de oportunidad hay o encuentro yo? Evidentemente se requiere infraestructura, la protección de los datos personales, la ciberseguridad, no excluir a los adultos mayores, que es lo que se tiene que tener en cuenta. Prácticamente el 85 por ciento de los adultos mayores todavía pagan en efectivo o quieren pagar en efectivo. Entonces creo que en eso gira todo este tema y caminar a una modernidad, pero con las reservas de ir cuidando al consumidor, al pagador y sobre todo darle certeza por el manejo de la información que se va a tener."
-        ],
-        "meta": "Redacción · 11 de noviembre"
+        "etq": "Al momento",
+        "tit": "12601",
+        "res": "",
+        "cuerpo": [],
+        "meta": "Redacción"
       }
     ]
   }
