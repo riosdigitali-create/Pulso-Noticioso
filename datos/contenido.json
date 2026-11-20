@@ -102,6 +102,21 @@
     ],
     "local": [
       {
+        "id": "63851727-71ff-4918-818c-335c3cee1b96",
+        "img": "contenido/imagenes/local--15489--mwobzj5kct.jpg",
+        "cat": "local",
+        "etq": "Nueva",
+        "tit": "Trabajar en unidad por el Estado",
+        "res": "Luz Elena diputada local y presidente de la. Junta de gobierno",
+        "cuerpo": [
+          "CONGRESO DE COAHUILA RECONOCE TRABAJO CONJUNTO CON EL GOBERNADOR MANOLO JIMÉNEZ\nSaltillo, Coahuila. – Durante la recepción del Tercer Informe de Gobierno, la Sexagésima Tercera Legislatura destacó el trabajo coordinado que se ha mantenido durante los últimos tres años con el gobernador Manolo Jiménez Salinas.",
+          "Se señaló que este es el último informe de gobierno que recibirá esta legislatura, y que a lo largo de este periodo el mandatario estatal ha convocado a trabajar juntos, más allá de posturas partidistas, en temas fundamentales para Coahuila, como la seguridad y el desarrollo del estado.\n“Como legislatura nos hemos sumado a ese llamado, entendiendo que aún con nuestras diferencias políticas podemos tener una responsabilidad compartida con las y los coahuilenses”, se expresó durante la sesión.\nAsimismo, se hizo un reconocimiento al gobernador y a todo su equipo de trabajo por la disposición que han tenido para mantener el diálogo y la colaboración con esta legislatura.",
+          "Finalmente, se hizo un llamado a seguir encontrando coincidencias, respetando las diferencias, y sobre todo trabajando en unidad por el bien de Coahuila.",
+          "Pulso Noticioso\nLatiendo por la Verdad\nwww.pulsonoticioso.org"
+        ],
+        "meta": "Redacción · 19 de noviembre"
+      },
+      {
         "id": "0f95720f-effe-4762-a13e-bab06c226d34",
         "img": "contenido/imagenes/local--15571--mwobltw2jl.webp",
         "cat": "local",
@@ -145,15 +160,6 @@
         "meta": "Redacción"
       },
       {
-        "img": "contenido/imagenes/local--29008--ms51x8jy9w.jpg",
-        "cat": "local",
-        "etq": "Al momento",
-        "tit": "29008",
-        "res": "",
-        "cuerpo": [],
-        "meta": "Redacción"
-      },
-      {
         "img": "contenido/imagenes/local--47632--mvu17i9wlh.jpg",
         "cat": "local",
         "etq": "Al momento",
@@ -164,15 +170,6 @@
       },
       {
         "img": "contenido/imagenes/local--47632--mvu1842zg7.jpg",
-        "cat": "local",
-        "etq": "Al momento",
-        "tit": "47632",
-        "res": "",
-        "cuerpo": [],
-        "meta": "Redacción"
-      },
-      {
-        "img": "contenido/imagenes/local--47632--mvu1bitge8.jpg",
         "cat": "local",
         "etq": "Al momento",
         "tit": "47632",
